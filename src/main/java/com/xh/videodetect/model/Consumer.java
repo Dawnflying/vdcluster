@@ -1,5 +1,7 @@
 package com.xh.videodetect.model;
 
+import com.xh.videodetect.authenication.Token;
+
 import java.util.Date;
 
 /**
@@ -7,9 +9,11 @@ import java.util.Date;
  */
 public class Consumer extends Entity{
 
+    private int id;
+
     private String name;
 
-    private String token;
+    private Token access_token;
 
     private String ipAddress;
 

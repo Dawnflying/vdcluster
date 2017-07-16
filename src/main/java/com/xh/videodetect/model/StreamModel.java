@@ -69,4 +69,13 @@ public class StreamModel extends Entity {
     public void setStreamState(STREAMSTATE streamState) {
         this.streamState = streamState;
     }
+
+    public StreamModel(String name, String ipAddress, int port, String uri){
+        super();
+        this.name = name;
+        this.ipAddress = ipAddress;
+        this.port = port;
+        this.uri = uri;
+
+    }
 }
