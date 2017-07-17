@@ -11,7 +11,6 @@ public class Token {
 
     private Date expireTime;
 
-
     public String getTokenString() {
         return tokenString;
     }

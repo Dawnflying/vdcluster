@@ -23,39 +23,38 @@ public class URL implements Serializable {
 
     private final String path;
 
-    private String serviceName;
+    private String serviceType;
 
     private Map<String, String> parameters = new HashMap<>();
 
-    public URL(String protocol, String serviceName) {
-        this.serviceName = serviceName;
+    public URL(String protocol, String serviceType) {
+        this.serviceType = serviceType;
         this.protocol = protocol;
         this.host = Constant.LOCAL_HOST;
         this.port = Constant.PORT;
         this.path = buildString();
     }
 
-    public URL(String protocol, String host, int port, String serviceName, Map<String, String> parameters) {
+    public URL(String protocol, String host, int port, String serviceType, Map<String, String> parameters) {
         this.protocol = protocol;
         this.host = host;
         this.port = port;
         this.parameters = parameters;
-        this.serviceName = serviceName;
-
+        this.serviceType = serviceType;
         this.path = buildString();
     }
 
     public URL addParameter(String key, String value) {
         parameters.put(key, value);
-        return new URL(protocol, host, port, serviceName, getParameters());
+        return new URL(protocol, host, port, serviceType, getParameters());
     }
 
     public String getRegisterPath() throws UnsupportedEncodingException {
-        return ROOT + '/' + serviceName + '/' + protocol + '/' + URLEncoder.encode(buildString(), "UTF-8");
+        return ROOT + '/' + serviceType + '/' + protocol + '/' + URLEncoder.encode(buildString(), "UTF-8");
     }
 
     public String getSubscribePath() {
-        return ROOT + '/' + serviceName + '/' + ServiceType.PROVIDER.getLabel();
+        return ROOT + '/' + serviceType + '/' + ServiceType.PROVIDER.getLabel();
     }
 
     private String buildString() {
@@ -66,7 +65,7 @@ public class URL implements Serializable {
             buf.append("://");
         }
 
-        buf.append(host).append(':').append(port).append('/').append(serviceName).append(buildParameters());
+        buf.append(host).append(':').append(port).append('/').append(serviceType).append(buildParameters());
 
         return buf.toString();
     }
@@ -99,7 +98,7 @@ public class URL implements Serializable {
     }
 
     public String getServiceName() {
-        return serviceName;
+        return serviceType;
     }
 
     public static String decode(String value) {
@@ -121,7 +120,7 @@ public class URL implements Serializable {
         String protocol = null;
         String host = null;
         int port = 0;
-        String serviceName = null;
+        String serviceType = null;
         Map<String, String> parameters = new HashMap<>();
         int i = url.indexOf("?"); // seperator between body and parameters
         if (i >= 0) {
@@ -149,7 +148,7 @@ public class URL implements Serializable {
 
         i = url.indexOf("/");
         if (i >= 0) {
-            serviceName = url.substring(i + 1);
+            serviceType = url.substring(i + 1);
             url = url.substring(0, i);
         }
 
@@ -159,7 +158,7 @@ public class URL implements Serializable {
             url = url.substring(0, i);
         }
         if (url.length() > 0) host = url;
-        return new URL(protocol, host, port, serviceName, parameters);
+        return new URL(protocol, host, port, serviceType, parameters);
     }
 
     public String getPath() {

@@ -17,5 +17,4 @@ public class Node extends Entity{
 
     private int capbility;
 
-
 }

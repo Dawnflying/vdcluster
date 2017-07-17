@@ -14,5 +14,4 @@ public class Entity implements Serializable {
 
     private Date modified;
 
-
 }

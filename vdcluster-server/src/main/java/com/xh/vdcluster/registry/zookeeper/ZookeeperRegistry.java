@@ -13,8 +13,8 @@ public class ZookeeperRegistry implements RegistryService {
 
     private ZkClient zkClient;
 
-    public ZookeeperRegistry(String url) {
-        this.zkClient = new CuratorZkClient(url);
+    public ZookeeperRegistry(String zookeeperUrl) {
+        this.zkClient = new CuratorZkClient(zookeeperUrl);
     }
 
     public void register(URL url) throws Exception{
