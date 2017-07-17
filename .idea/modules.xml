@@ -3,6 +3,8 @@
   <component name="ProjectModuleManager">
     <modules>
       <module fileurl="file://$PROJECT_DIR$/vdcluster.iml" filepath="$PROJECT_DIR$/vdcluster.iml" />
+      <module fileurl="file://$PROJECT_DIR$/vdcluster-client/vdcluster-client.iml" filepath="$PROJECT_DIR$/vdcluster-client/vdcluster-client.iml" />
+      <module fileurl="file://$PROJECT_DIR$/vdcluster-server/vdcluster-server.iml" filepath="$PROJECT_DIR$/vdcluster-server/vdcluster-server.iml" />
     </modules>
   </component>
 </project>
