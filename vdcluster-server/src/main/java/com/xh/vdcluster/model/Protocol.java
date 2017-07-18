@@ -6,8 +6,11 @@ package com.xh.vdcluster.model;
 public class Protocol {
 
     public enum TYPE{
+
         RTSP,
+
         RTMP,
+
         HLS,
     }
 }

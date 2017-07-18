@@ -2,7 +2,6 @@ package com.xh.vdcluster.registry;
 
 import com.xh.vdcluster.rpc.Invocation;
 import com.xh.vdcluster.rpc.Invoker;
-
 import java.util.List;
 
 /**
