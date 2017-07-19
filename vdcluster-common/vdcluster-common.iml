@@ -67,5 +67,9 @@
     <orderEntry type="library" name="Maven: org.apache.curator:curator-client:2.8.0" level="project" />
     <orderEntry type="library" name="Maven: com.google.guava:guava:16.0.1" level="project" />
     <orderEntry type="library" name="Maven: org.apache.curator:curator-recipes:2.8.0" level="project" />
+    <orderEntry type="library" name="Maven: org.apache.thrift:libthrift:0.10.0" level="project" />
+    <orderEntry type="library" name="Maven: org.apache.httpcomponents:httpclient:4.5.3" level="project" />
+    <orderEntry type="library" name="Maven: commons-codec:commons-codec:1.10" level="project" />
+    <orderEntry type="library" name="Maven: org.apache.httpcomponents:httpcore:4.4.6" level="project" />
   </component>
 </module>
