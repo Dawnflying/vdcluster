@@ -1,8 +1,14 @@
 package com.xh.vdcluster.client;
 
 import com.xh.vdcluster.client.callbacks.AddServiceCallback;
+import com.xh.vdcluster.common.URL;
+import com.xh.vdcluster.registry.ChildListener;
+import com.xh.vdcluster.registry.RegistryService;
+import com.xh.vdcluster.registry.zookeeper.ZookeeperRegistryFactory;
 import com.xh.vdcluster.rpc.DetectService;
 import com.xh.vdcluster.rpc.DetectServiceConfiguration;
+import org.apache.curator.framework.CuratorFramework;
+import org.apache.curator.framework.recipes.cache.PathChildrenCacheEvent;
 import org.apache.thrift.TException;
 import org.apache.thrift.async.TAsyncClientManager;
 import org.apache.thrift.protocol.*;
@@ -23,7 +29,7 @@ import java.util.Map;
 public class NodeClient {
 
     public void start() throws Exception {
-        TTransport transport = new TSocket("10.200.9.130", 9090);
+        /*TTransport transport = new TSocket("10.200.9.130", 9090);
         transport.open();
         TProtocol protocol = new TBinaryProtocol(transport);
         DetectService.Client client = new DetectService.Client(protocol);
@@ -41,11 +47,11 @@ public class NodeClient {
         detectSensitivity.put(2, 0.4);
         configuration.setDetectSensitivity(detectSensitivity);
         configuration.setFrameWidth(1080);
-        configuration.setFrameHeight(768);
-        while (true) {
+        configuration.setFrameHeight(768);*/
+ /*       while (true) {
             int result = client.addService(configuration);
             Thread.sleep(10);
-        }
+        }*/
 //        transport.close();
 //        TProtocolFactory tProtocolFactory = new TCompactProtocol.Factory();
 //        TAsyncClientManager tAsyncClientManager = new TAsyncClientManager();
@@ -56,6 +62,27 @@ public class NodeClient {
 //            asyncClient.addService(configuration, addServiceCallback);
 //            Thread.sleep(2000);
 //        }
+
+        ZookeeperRegistryFactory factory = new ZookeeperRegistryFactory();
+        Map<String, String> parameters = new HashMap<>();
+        parameters.put("username", "admin");
+        parameters.put("password", "hk123456");
+        URL url = new URL("rtsp", "10.200.9.225", 554, "stream", parameters);
+        RegistryService service = factory.createRegistry("10.200.8.102:2181");
+
+        service.register(url);
+
+        service.subscribe(url, new ChildListener() {
+            @Override
+            public void childChanged(String path, List<String> children) throws Exception {
+
+            }
+
+            @Override
+            public void childEvent(CuratorFramework curatorFramework, PathChildrenCacheEvent pathChildrenCacheEvent) throws Exception {
+
+            }
+        });
 
     }
 
