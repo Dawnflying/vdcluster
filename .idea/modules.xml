@@ -2,10 +2,10 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/vdcluster-client/client.iml" filepath="$PROJECT_DIR$/vdcluster-client/client.iml" />
-      <module fileurl="file://$PROJECT_DIR$/vdcluster-server/server.iml" filepath="$PROJECT_DIR$/vdcluster-server/server.iml" />
       <module fileurl="file://$PROJECT_DIR$/vdcluster.iml" filepath="$PROJECT_DIR$/vdcluster.iml" />
+      <module fileurl="file://$PROJECT_DIR$/vdcluster-client/client.iml" filepath="$PROJECT_DIR$/vdcluster-client/client.iml" />
       <module fileurl="file://$PROJECT_DIR$/vdcluster-common/vdcluster-common.iml" filepath="$PROJECT_DIR$/vdcluster-common/vdcluster-common.iml" />
+      <module fileurl="file://$PROJECT_DIR$/vdcluster-server/server.iml" filepath="$PROJECT_DIR$/vdcluster-server/server.iml" />
     </modules>
   </component>
 </project>
