@@ -1,7 +1,7 @@
 package com.xh.vdcluster.controller;
 
 import com.xh.vdcluster.authenication.TokenFactory;
-import com.xh.vdcluster.model.VdResult;
+import com.xh.vdcluster.common.VdResult;
 import com.xh.vdcluster.service.UserService;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;

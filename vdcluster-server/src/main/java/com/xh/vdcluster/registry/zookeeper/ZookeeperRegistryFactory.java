@@ -1,6 +1,5 @@
 package com.xh.vdcluster.registry.zookeeper;
 
-import com.xh.vdcluster.common.URL;
 import com.xh.vdcluster.registry.RegistryService;
 
 /**
