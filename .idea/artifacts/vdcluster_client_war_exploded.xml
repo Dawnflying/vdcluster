@@ -1,12 +1,10 @@
 <component name="ArtifactManager">
-  <artifact type="exploded-war" name="client:war exploded">
-    <output-path>$PROJECT_DIR$/out/artifacts/client_war_exploded</output-path>
+  <artifact type="exploded-war" name="vdcluster-client:war exploded">
+    <output-path>$PROJECT_DIR$/out/artifacts/vdcluster_client_war_exploded</output-path>
     <root id="root">
-      <element id="javaee-facet-resources" facet="client/web/Web" />
       <element id="directory" name="WEB-INF">
         <element id="directory" name="classes">
-          <element id="module-output" name="client" />
-          <element id="module-output" name="vdcluster-common" />
+          <element id="module-output" name="vdcluster-client" />
         </element>
         <element id="directory" name="lib">
           <element id="library" level="project" name="Maven: org.springframework.boot:spring-boot-starter-web:1.5.2.RELEASE" />
@@ -21,7 +19,6 @@
           <element id="library" level="project" name="Maven: org.slf4j:log4j-over-slf4j:1.7.24" />
           <element id="library" level="project" name="Maven: org.yaml:snakeyaml:1.17" />
           <element id="library" level="project" name="Maven: org.springframework.boot:spring-boot-starter-tomcat:1.5.2.RELEASE" />
-          <element id="library" level="project" name="Maven: org.apache.tomcat.embed:tomcat-embed-core:8.5.11" />
           <element id="library" level="project" name="Maven: org.apache.tomcat.embed:tomcat-embed-el:8.5.11" />
           <element id="library" level="project" name="Maven: org.apache.tomcat.embed:tomcat-embed-websocket:8.5.11" />
           <element id="library" level="project" name="Maven: org.hibernate:hibernate-validator:5.3.4.Final" />
@@ -31,15 +28,16 @@
           <element id="library" level="project" name="Maven: com.fasterxml.jackson.core:jackson-databind:2.8.7" />
           <element id="library" level="project" name="Maven: com.fasterxml.jackson.core:jackson-annotations:2.8.0" />
           <element id="library" level="project" name="Maven: com.fasterxml.jackson.core:jackson-core:2.8.7" />
-          <element id="library" level="project" name="Maven: org.springframework:spring-web:4.3.7.RELEASE" />
-          <element id="library" level="project" name="Maven: org.springframework:spring-aop:4.3.7.RELEASE" />
-          <element id="library" level="project" name="Maven: org.springframework:spring-beans:4.3.7.RELEASE" />
-          <element id="library" level="project" name="Maven: org.springframework:spring-context:4.3.7.RELEASE" />
-          <element id="library" level="project" name="Maven: org.springframework:spring-webmvc:4.3.7.RELEASE" />
-          <element id="library" level="project" name="Maven: org.springframework:spring-expression:4.3.7.RELEASE" />
-          <element id="library" level="project" name="Maven: junit:junit:4.12" />
+          <element id="library" level="project" name="Maven: org.springframework:spring-web:4.2.4.RELEASE" />
+          <element id="library" level="project" name="Maven: org.springframework:spring-aop:4.2.4.RELEASE" />
+          <element id="library" level="project" name="Maven: aopalliance:aopalliance:1.0" />
+          <element id="library" level="project" name="Maven: org.springframework:spring-beans:4.2.4.RELEASE" />
+          <element id="library" level="project" name="Maven: org.springframework:spring-context:4.2.4.RELEASE" />
+          <element id="library" level="project" name="Maven: org.springframework:spring-webmvc:4.2.4.RELEASE" />
+          <element id="library" level="project" name="Maven: org.springframework:spring-expression:4.2.4.RELEASE" />
+          <element id="library" level="project" name="Maven: junit:junit:4.11" />
           <element id="library" level="project" name="Maven: org.hamcrest:hamcrest-core:1.3" />
-          <element id="library" level="project" name="Maven: org.springframework:spring-core:4.3.7.RELEASE" />
+          <element id="library" level="project" name="Maven: org.springframework:spring-core:4.2.4.RELEASE" />
           <element id="library" level="project" name="Maven: org.slf4j:slf4j-api:1.7.24" />
           <element id="library" level="project" name="Maven: org.apache.commons:commons-lang3:3.0" />
           <element id="library" level="project" name="Maven: org.apache.zookeeper:zookeeper:3.4.6" />
@@ -55,9 +53,11 @@
           <element id="library" level="project" name="Maven: org.apache.httpcomponents:httpclient:4.5.3" />
           <element id="library" level="project" name="Maven: commons-codec:commons-codec:1.10" />
           <element id="library" level="project" name="Maven: org.apache.httpcomponents:httpcore:4.4.6" />
-          <element id="library" level="project" name="Spring Integration-4.0.3" />
+          <element id="library" level="project" name="Maven: com.rabbitmq:amqp-client:4.1.1" />
         </element>
       </element>
+      <element id="library" level="project" name="Spring Integration-4.0.3" />
+      <element id="javaee-facet-resources" facet="vdcluster-client/web/Web" />
     </root>
   </artifact>
 </component>
