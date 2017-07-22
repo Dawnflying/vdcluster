@@ -3,4 +3,11 @@
        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
        xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
     <bean id="client" class="com.xh.vdcluster.client.NodeClient" init-method="start"/>
+    <bean id="messageClient" class="com.xh.vdcluster.client.MessageClient">
+        <property name="hostName" value="${hostname}"/>
+        <property name="password" value="${password}"/>
+        <property name="port" value="${port}"/>
+        <property name="userName" value="${username}"/>
+        <property name="virtualHost" value="${virtualhost"/>
+    </bean>
 </beans>

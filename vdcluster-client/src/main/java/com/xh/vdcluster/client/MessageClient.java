@@ -23,6 +23,14 @@ public class MessageClient {
 
     private String amqpUrl;
 
+    private Channel channel;
+
+    private static final String exchangeName = "exchange";
+
+    private static final String queueName = "queue";
+
+    private static final String routingKey = "vd.device";
+
     private static MessageClient client;
 
     public static MessageClient getInstance() {
@@ -36,7 +44,12 @@ public class MessageClient {
         try {
             connectionFactory.setUri(buildAMQPUrl());
             Connection connection = connectionFactory.newConnection();
-            Channel channel = connection.createChannel();
+            channel = connection.createChannel();
+
+            channel.exchangeDeclare(exchangeName, "direct", true);
+            channel.queueDeclare(queueName, true, false, false, null);
+            channel.queueBind(queueName, exchangeName, routingKey);
+
 
         } catch (Exception e) {
 
@@ -46,6 +59,53 @@ public class MessageClient {
     private String buildAMQPUrl() {
         StringBuilder builder = new StringBuilder();
         builder.append("amqp://").append(userName).append(":").append(password).append("@").append(hostName + ":" + port + "/" + virtualHost);
-        return builder.toString();
+        this.amqpUrl = builder.toString();
+        return amqpUrl;
+    }
+
+    private void publishMessage(String message) throws Exception{
+        byte[] messageBodyBytes = message.getBytes();
+        channel.basicPublish(exchangeName, routingKey, null, messageBodyBytes);
+    }
+
+
+    public String getUserName() {
+        return userName;
+    }
+
+    public void setUserName(String userName) {
+        this.userName = userName;
+    }
+
+    public String getPassword() {
+        return password;
+    }
+
+    public void setPassword(String password) {
+        this.password = password;
+    }
+
+    public String getHostName() {
+        return hostName;
+    }
+
+    public void setHostName(String hostName) {
+        this.hostName = hostName;
+    }
+
+    public Integer getPort() {
+        return port;
+    }
+
+    public void setPort(Integer port) {
+        this.port = port;
+    }
+
+    public String getVirtualHost() {
+        return virtualHost;
+    }
+
+    public void setVirtualHost(String virtualHost) {
+        this.virtualHost = virtualHost;
     }
 }
