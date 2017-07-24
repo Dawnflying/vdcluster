@@ -1,18 +1,17 @@
 package com.xh.vdcluster.vdmanager.beans;
 
-import com.xh.vdcluster.model.StreamModel;
+import com.xh.vdcluster.repository.model.Stream;
 
-import java.util.List;
 import java.util.concurrent.ConcurrentLinkedQueue;
 
 /**
  * Created by macbookpro on 17/7/22.
  */
-public class VdService {
+public class VdServant {
 
     private String serviceId;
 
-    private StreamModel streamModel;
+    private Stream streamModel;
 
     private ConcurrentLinkedQueue<String> requestQueue;
 

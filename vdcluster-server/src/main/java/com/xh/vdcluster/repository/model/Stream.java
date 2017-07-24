@@ -1,9 +1,9 @@
-package com.xh.vdcluster.vdmanager.beans;
+package com.xh.vdcluster.repository.model;
 
 /**
  * Created by bloom on 2017/7/16.
  */
-public class StreamModel {
+public class Stream {
 
     public enum STREAMSTATE{
         IDLE,
@@ -80,7 +80,7 @@ public class StreamModel {
         this.protocol = protocol;
     }
 
-    public StreamModel(String name, String ipAddress, int port, String uri){
+    public Stream(String name, String ipAddress, int port, String uri){
         super();
         this.name = name;
         this.ipAddress = ipAddress;
