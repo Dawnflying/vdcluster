@@ -1,9 +1,9 @@
-package com.xh.vdcluster.model;
+package com.xh.vdcluster.vdmanager.beans;
 
 /**
  * Created by bloom on 2017/7/16.
  */
-public class StreamModel extends Entity {
+public class StreamModel {
 
     public enum STREAMSTATE{
         IDLE,

@@ -12,7 +12,26 @@
         <module>vdcluster-client</module>
         <module>vdcluster-server</module>
         <module>vdcluster-common</module>
+        <module>vdcluster-sdk</module>
     </modules>
+
+    <parent>
+        <groupId>org.springframework.boot</groupId>
+        <artifactId>spring-boot-starter-parent</artifactId>
+        <version>1.5.2.RELEASE</version>
+    </parent>
+
+    <properties>
+        <spring.version>4.2.4.RELEASE</spring.version>
+        <junit.version>4.11</junit.version>
+        <common.lang3.version>3.0</common.lang3.version>
+        <curator.version>2.8.0</curator.version>
+        <dubbo.version>3.0.0</dubbo.version>
+        <netty.version>4.0.23.Final</netty.version>
+        <spring-rabbit.version>1.7.3.RELEASE</spring-rabbit.version>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+        <rabbitmq.version>4.1.0</rabbitmq.version>
+    </properties>
     <dependencies>
 
         <dependency>
@@ -59,10 +78,18 @@
         </dependency>
 
         <dependency>
+            <groupId>org.springframework.amqp</groupId>
+            <artifactId>spring-rabbit</artifactId>
+            <version>1.7.3.RELEASE</version>
+        </dependency>
+
+        <dependency>
             <groupId>com.rabbitmq</groupId>
             <artifactId>amqp-client</artifactId>
             <version>4.1.1</version>
         </dependency>
 
     </dependencies>
+
+
 </project>

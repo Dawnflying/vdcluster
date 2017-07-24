@@ -1,8 +1,8 @@
 package com.xh.vdcluster.controller;
 
+import com.xh.vdcluster.common.VdResult;
 import com.xh.vdcluster.common.annotation.Auth;
 import com.xh.vdcluster.model.StreamModel;
-import com.xh.vdcluster.model.VdResult;
 import com.xh.vdcluster.service.StreamService;
 import com.xh.vdcluster.service.TokenService;
 import org.springframework.web.bind.annotation.RequestBody;

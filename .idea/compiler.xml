@@ -10,6 +10,7 @@
         <module name="server" />
         <module name="vdcluster-client" />
         <module name="vdcluster-common" />
+        <module name="vdcluster-sdk" />
         <module name="vdcluster-server" />
       </profile>
     </annotationProcessing>
@@ -19,6 +20,7 @@
       <module name="vdcluster" target="1.6" />
       <module name="vdcluster-client" target="1.6" />
       <module name="vdcluster-common" target="1.6" />
+      <module name="vdcluster-sdk" target="1.6" />
       <module name="vdcluster-server" target="1.6" />
     </bytecodeTargetLevel>
   </component>

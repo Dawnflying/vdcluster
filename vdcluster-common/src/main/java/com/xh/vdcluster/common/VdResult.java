@@ -1,4 +1,4 @@
-package com.xh.vdcluster.model;
+package com.xh.vdcluster.common;
 
 import java.io.Serializable;
 
