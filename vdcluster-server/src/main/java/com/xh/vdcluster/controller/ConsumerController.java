@@ -1,6 +1,6 @@
 package com.xh.vdcluster.controller;
 
-import com.xh.vdcluster.authenication.TokenFactory;
+import com.xh.vdcluster.authenication.TokenManager;
 import com.xh.vdcluster.common.VdResult;
 import com.xh.vdcluster.service.UserService;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -23,7 +23,7 @@ public class ConsumerController {
     public VdResult authenticate(@RequestParam(name = "username") String username, @RequestParam(name = "code") String code) {
 
         if (userService.authenticate(username, code)) {
-            return new VdResult("OK",VdResult.AUTH_SUCCESS,TokenFactory.getToken());
+            return new VdResult("OK",VdResult.AUTH_SUCCESS, TokenManager.getToken());
         } else {
             return new VdResult("OK",VdResult.AUTH_SUCCESS,null);
         }

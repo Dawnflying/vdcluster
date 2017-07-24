@@ -1,14 +1,13 @@
-package com.xh.vdcluster.vdmanager.beans;
+package com.xh.vdcluster.repository.model;
 
 /**
  * Created by bloom on 2017/7/16.
  */
-public class StreamModel {
+public class Stream {
 
-    public enum STREAMSTATE{
-        IDLE,
-        RUNNING,
-    }
+    private static final int STOPPED = 0;
+
+    private static final int RUNNING = 1;
 
     private String name;
 
@@ -22,7 +21,7 @@ public class StreamModel {
 
     private int timeCount;
 
-    private STREAMSTATE streamState;
+    private int streamState;
 
     public String getName() {
         return name;
@@ -64,14 +63,6 @@ public class StreamModel {
         this.timeCount = timeCount;
     }
 
-    public STREAMSTATE getStreamState() {
-        return streamState;
-    }
-
-    public void setStreamState(STREAMSTATE streamState) {
-        this.streamState = streamState;
-    }
-
     public String getProtocol() {
         return protocol;
     }
@@ -80,12 +71,12 @@ public class StreamModel {
         this.protocol = protocol;
     }
 
-    public StreamModel(String name, String ipAddress, int port, String uri){
+    public Stream(String name, String ipAddress, int port, String uri){
         super();
         this.name = name;
         this.ipAddress = ipAddress;
         this.port = port;
         this.uri = uri;
-
+        this.streamState = Stream.STOPPED;
     }
 }

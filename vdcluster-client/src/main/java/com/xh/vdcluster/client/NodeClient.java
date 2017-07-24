@@ -29,14 +29,15 @@ import java.util.Map;
 public class NodeClient {
 
     public void start() throws Exception {
-        /*TTransport transport = new TSocket("10.200.9.130", 9090);
-        transport.open();
-        TProtocol protocol = new TBinaryProtocol(transport);
-        DetectService.Client client = new DetectService.Client(protocol);
         DetectServiceConfiguration configuration = new DetectServiceConfiguration();
         configuration.setServiceId("test_id_123");
         configuration.setDecodeMode(1);
         configuration.setStreamURL("rtsp://admin:hk1234567890@10.200.9.225:554/h264/ch1/sub/av_stream");
+        /*TTransport transport = new TSocket("10.200.9.130", 9090);
+        transport.open();
+        TProtocol protocol = new TBinaryProtocol(transport);
+        DetectService.Client client = new DetectService.Client(protocol);
+
         List<Integer> typeList = new ArrayList<Integer>();
         typeList.add(1);
         typeList.add(2);
@@ -47,31 +48,27 @@ public class NodeClient {
         detectSensitivity.put(2, 0.4);
         configuration.setDetectSensitivity(detectSensitivity);
         configuration.setFrameWidth(1080);
-        configuration.setFrameHeight(768);*/
+        configuration.setFrameHeight(768);
  /*       while (true) {
             int result = client.addService(configuration);
             Thread.sleep(10);
         }*/
 //        transport.close();
-//        TProtocolFactory tProtocolFactory = new TCompactProtocol.Factory();
-//        TAsyncClientManager tAsyncClientManager = new TAsyncClientManager();
-//        TNonblockingSocket tNonblockingSocket = new TNonblockingSocket("10.200.9.130", 9090);
-//        DetectService.AsyncClient asyncClient = new DetectService.AsyncClient(tProtocolFactory, tAsyncClientManager, tNonblockingSocket);
-//        AddServiceCallback addServiceCallback = new AddServiceCallback();
-//        while (true) {
-//            asyncClient.addService(configuration, addServiceCallback);
-//            Thread.sleep(2000);
-//        }
+        TProtocolFactory tProtocolFactory = new TCompactProtocol.Factory();
+        TAsyncClientManager tAsyncClientManager = new TAsyncClientManager();
+        TNonblockingSocket tNonblockingSocket = new TNonblockingSocket("10.200.9.130", 9090);
+        DetectService.AsyncClient asyncClient = new DetectService.AsyncClient(tProtocolFactory, tAsyncClientManager, tNonblockingSocket);
+        AddServiceCallback addServiceCallback = new AddServiceCallback();
+        asyncClient.addService(configuration, addServiceCallback);
 
         ZookeeperRegistryFactory factory = new ZookeeperRegistryFactory();
         Map<String, String> parameters = new HashMap<>();
         parameters.put("username", "admin");
         parameters.put("password", "hk123456");
         URL url = new URL("rtsp", "10.200.9.225", 554, "stream", parameters);
+
         RegistryService service = factory.createRegistry("10.200.8.102:2181");
-
         service.register(url);
-
         service.subscribe(url, new ChildListener() {
             @Override
             public void childChanged(String path, List<String> children) throws Exception {

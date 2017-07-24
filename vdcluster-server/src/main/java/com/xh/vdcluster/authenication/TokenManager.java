@@ -8,7 +8,7 @@ import java.util.concurrent.CopyOnWriteArrayList;
 /**
  * Created by bloom on 2017/7/16.
  */
-public class TokenFactory {
+public class TokenManager {
 
     private static CopyOnWriteArrayList<Token> tokens = new CopyOnWriteArrayList<Token>();
     /**
@@ -22,7 +22,7 @@ public class TokenFactory {
         Date expireDate = DateUtils.getFromMills(System.currentTimeMillis()+duration*1000);
 
         Token token = new Token(tokenstr,expireDate);
-        
+
         tokens.add(token);
 
         return token;
@@ -34,5 +34,18 @@ public class TokenFactory {
      */
     public static Token getToken(){
         return getToken(300);
+    }
+
+    public static boolean checkTokenExpiration(String token){
+        Boolean isValid = false;
+
+        for(Token t: tokens){
+            if(t.getTokenString() == token && t.getExpireTime().compareTo(DateUtils.getNow()) > 0)
+            {
+                isValid = true;
+            }
+        }
+
+        return isValid;
     }
 }

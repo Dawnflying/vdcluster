@@ -1,16 +1,18 @@
 package com.xh.vdcluster.service;
 
-import com.xh.vdcluster.model.VideoDetectConfiguration;
-import com.xh.vdcluster.model.VideoDetectResult;
+import com.xh.vdcluster.common.VdResult;
+import com.xh.vdcluster.common.VdConfiguration;
 
 /**
  * Created by bloom on 2017/7/21.
  */
 public interface VideoDetectService {
 
-    VideoDetectResult requestService(String username, String password);
+    VdResult requestToken(String username, String password);
 
-    VideoDetectResult addService(String token, VideoDetectConfiguration configuration, Call);
+    VdResult addService(String token, VdConfiguration configuration, Runnable handler);
 
+    VdResult stopService(String token, String serviceId);
 
+    VdResult removeService(String token, String serviceId);
 }

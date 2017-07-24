@@ -1,5 +1,7 @@
 package com.xh.vdcluster.annotation;
 
+import java.lang.annotation.*;
+
 /**
  * Created by macbookpro on 17/7/23.
  */

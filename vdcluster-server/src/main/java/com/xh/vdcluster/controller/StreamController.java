@@ -2,7 +2,7 @@ package com.xh.vdcluster.controller;
 
 import com.xh.vdcluster.common.VdResult;
 import com.xh.vdcluster.common.annotation.Auth;
-import com.xh.vdcluster.model.StreamModel;
+import com.xh.vdcluster.repository.model.Stream;
 import com.xh.vdcluster.service.StreamService;
 import com.xh.vdcluster.service.TokenService;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -27,14 +27,14 @@ public class StreamController {
 
     @RequestMapping("/registerStream")
     @Auth("register")
-    public VdResult registerStream(@RequestParam(name = "token") String token, @RequestBody StreamModel streamModel) {
+    public VdResult registerStream(@RequestParam(name = "token") String token, @RequestBody Stream streamModel) {
 
         return null;
     }
 
     @RequestMapping("/registerStreamGroup")
     @Auth("register")
-    public VdResult registerStreamGroup(@RequestParam(name = "token") String token, @RequestBody List<StreamModel> streamModelList
+    public VdResult registerStreamGroup(@RequestParam(name = "token") String token, @RequestBody List<Stream> streamModelList
                                         ) {
 
         return null;
