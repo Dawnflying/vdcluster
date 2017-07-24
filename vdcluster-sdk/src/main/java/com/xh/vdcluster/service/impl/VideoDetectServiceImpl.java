@@ -1,7 +1,7 @@
 package com.xh.vdcluster.service.impl;
 
+import com.xh.vdcluster.common.DetectServiceConfiguration;
 import com.xh.vdcluster.common.VdResult;
-import com.xh.vdcluster.common.VdConfiguration;
 import com.xh.vdcluster.service.VideoDetectService;
 
 /**
@@ -14,9 +14,7 @@ public class VideoDetectServiceImpl implements VideoDetectService {
     }
 
     @Override
-    public VdResult addService(String token, VdConfiguration configuration, Runnable handler) {
-
-
+    public VdResult addService(String token, DetectServiceConfiguration configuration, Runnable handler) {
 
         return null;
     }

@@ -1,18 +1,17 @@
 package com.xh.vdcluster.repository.mapper;
 
-
 import com.xh.vdcluster.repository.model.Stream;
 
-/**
- * Created by macbookpro on 17/7/23.
- */
 public interface StreamMapper {
-    Stream getStreamById(int id);
+    int deleteByPrimaryKey(Integer id);
 
-    void deleteStream(int id);
+    int insert(Stream record);
 
-    void insertStream(Stream stream);
+    int insertSelective(Stream record);
 
-    void updateStream(Stream stream);
+    Stream selectByPrimaryKey(Integer id);
 
+    int updateByPrimaryKeySelective(Stream record);
+
+    int updateByPrimaryKey(Stream record);
 }

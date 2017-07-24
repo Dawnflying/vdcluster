@@ -1,20 +1,20 @@
 package com.xh.vdcluster.vdmanager.beans;
 
-import com.xh.vdcluster.common.VdConfiguration;
+import com.xh.vdcluster.common.DetectServiceConfiguration;
 import com.xh.vdcluster.repository.model.Stream;
-import com.xh.vdcluster.vdmanager.ServantHandler;
+import com.xh.vdcluster.vdmanager.ServantAdapter;
 
 /**
  * Created by macbookpro on 17/7/22.
  */
-public class VdServant implements ServantHandler {
+public class VdServant extends ServantAdapter {
 
     private String servantId;
 
     private Stream stream;
 
-    public VdServant(VdConfiguration configuration){
-
+    public VdServant(DetectServiceConfiguration configuration){
+        this.configuration = configuration;
     }
 
     public String getServantId() {
@@ -33,18 +33,4 @@ public class VdServant implements ServantHandler {
         this.stream = stream;
     }
 
-    @Override
-    public void start() {
-
-    }
-
-    @Override
-    public void stop() {
-
-    }
-
-    @Override
-    public void remove() {
-
-    }
 }

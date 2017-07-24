@@ -10,17 +10,15 @@ import java.util.concurrent.ConcurrentMap;
  */
 public class NodeManager {
 
-    private ConcurrentMap<String, Node> NodeMap = new ConcurrentHashMap<String, Node>();
+    private ConcurrentMap<String, Node> NodeMap = new ConcurrentHashMap<>();
 
     private NodeManager() {
     }
 
-    private static NodeManager instance;
+    private static NodeManager INSTANCE = new NodeManager();
 
     public static NodeManager getInstance() {
-        if (instance == null)
-            instance = new NodeManager();
-        return instance;
+        return INSTANCE;
     }
 
     public void addNode(Node node) {

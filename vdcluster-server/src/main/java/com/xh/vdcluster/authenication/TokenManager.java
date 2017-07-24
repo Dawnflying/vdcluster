@@ -10,7 +10,7 @@ import java.util.concurrent.CopyOnWriteArrayList;
  */
 public class TokenManager {
 
-    private static CopyOnWriteArrayList<Token> tokens = new CopyOnWriteArrayList<Token>();
+    private static CopyOnWriteArrayList<Token> tokens = new CopyOnWriteArrayList<>();
     /**
      * 获取口令
      * @param duration 有效时间，单位毫秒

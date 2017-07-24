@@ -2,29 +2,24 @@ package com.xh.vdcluster.repository.model;
 
 import java.util.Date;
 
-/**
- * Created by bloom on 2017/7/16.
- */
-public class User{
-
-    private int id;
+public class User {
+    private Integer id;
 
     private String userId;
 
-    private int username;
+    private String username;
 
-    private int passwd;
+    private String password;
 
-    private Date createTime;
+    private Date createtme;
 
-    private Date modifiedTime;
+    private Date modifiedtime;
 
-
-    public int getId() {
+    public Integer getId() {
         return id;
     }
 
-    public void setId(int id) {
+    public void setId(Integer id) {
         this.id = id;
     }
 
@@ -36,36 +31,35 @@ public class User{
         this.userId = userId;
     }
 
-    public int getUsername() {
+    public String getUsername() {
         return username;
     }
 
-    public void setUsername(int username) {
-        this.username = username;
+    public void setUsername(String username) {
+        this.username = username == null ? null : username.trim();
     }
 
-    public int getPasswd() {
-        return passwd;
+    public String getPassword() {
+        return password;
     }
 
-    public void setPasswd(int passwd) {
-        this.passwd = passwd;
+    public void setPassword(String password) {
+        this.password = password == null ? null : password.trim();
     }
 
-    public Date getCreateTime() {
-        return createTime;
+    public Date getCreatetme() {
+        return createtme;
     }
 
-    public void setCreateTime(Date createTime) {
-        this.createTime = createTime;
+    public void setCreatetme(Date createtme) {
+        this.createtme = createtme;
     }
 
-    public Date getModifiedTime() {
-        return modifiedTime;
+    public Date getModifiedtime() {
+        return modifiedtime;
     }
 
-    public void setModifiedTime(Date modifiedTime) {
-        this.modifiedTime = modifiedTime;
+    public void setModifiedtime(Date modifiedtime) {
+        this.modifiedtime = modifiedtime;
     }
-
 }

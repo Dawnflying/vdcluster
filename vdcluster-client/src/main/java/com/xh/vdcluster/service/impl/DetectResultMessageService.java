@@ -1,7 +1,7 @@
 package com.xh.vdcluster.service.impl;
 
 import com.xh.vdcluster.client.MessageManager;
-import com.xh.vdcluster.registry.model.DetectResult;
+import com.xh.vdcluster.rpc.DetectResult;
 import com.xh.vdcluster.service.MessageService;
 
 /**
@@ -10,7 +10,6 @@ import com.xh.vdcluster.service.MessageService;
 public class DetectResultMessageService implements MessageService<DetectResult> {
 
     private String topic;
-
 
     @Override
     public void pushMessage(DetectResult msg) throws Exception {

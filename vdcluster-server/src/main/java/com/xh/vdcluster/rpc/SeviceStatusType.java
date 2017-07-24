@@ -7,8 +7,6 @@
 package com.xh.vdcluster.rpc;
 
 
-import java.util.Map;
-import java.util.HashMap;
 import org.apache.thrift.TEnum;
 
 public enum SeviceStatusType implements TEnum {

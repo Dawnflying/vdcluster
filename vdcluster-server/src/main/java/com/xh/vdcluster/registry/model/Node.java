@@ -9,20 +9,39 @@ import java.util.List;
  * Created by bloom on 2017/7/16.
  */
 public class Node extends Entity {
-
-
+    /**
+     * 识别节点的ID
+     */
     private String nodeId;
 
+    /**
+     * 识别节点的名称
+     */
     private String name;
 
+    /**
+     * 识别节点的地址
+     */
     private String ipAddress;
 
+    /**
+     * 识别节点的端口
+     */
     private int port;
 
+    /**
+     * 识别节点正在识别的视频
+     */
     private List<Stream> streamList;
 
+    /**
+     * 识别节点当前的识别路数
+     */
     private int weight;
 
+    /**
+     * 识别节点能够承受的最大识别路数
+     */
     private int capability;
 
     public String getNodeId() {

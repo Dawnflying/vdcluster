@@ -1,6 +1,6 @@
 package com.xh.vdcluster.service;
 
-import com.xh.vdcluster.common.VdConfiguration;
+import com.xh.vdcluster.common.DetectServiceConfiguration;
 import com.xh.vdcluster.common.VdResult;
 
 import java.util.List;
@@ -10,9 +10,7 @@ import java.util.List;
  */
 public interface VdService {
 
-    VdResult requestServant(String username, String password);
-
-    VdResult addServant(String userId, String token, List<VdConfiguration> configuration);
+    VdResult addServant(String userId, String token, List<DetectServiceConfiguration> configuration);
 
     VdResult stopServant(String userId, String token, List<String> servantId);
 

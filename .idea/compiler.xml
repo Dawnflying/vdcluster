@@ -17,11 +17,11 @@
     <bytecodeTargetLevel>
       <module name="client" target="1.6" />
       <module name="server" target="1.6" />
-      <module name="vdcluster" target="1.6" />
-      <module name="vdcluster-client" target="1.6" />
-      <module name="vdcluster-common" target="1.6" />
-      <module name="vdcluster-sdk" target="1.6" />
-      <module name="vdcluster-server" target="1.6" />
+      <module name="vdcluster" target="1.8" />
+      <module name="vdcluster-client" target="1.8" />
+      <module name="vdcluster-common" target="1.8" />
+      <module name="vdcluster-sdk" target="1.8" />
+      <module name="vdcluster-server" target="1.8" />
     </bytecodeTargetLevel>
   </component>
 </project>

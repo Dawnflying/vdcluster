@@ -1,66 +1,38 @@
 package com.xh.vdcluster.repository.model;
 
-/**
- * Created by bloom on 2017/7/16.
- */
+import java.util.Date;
+
 public class Stream {
-
-    private static final int STOPPED = 0;
-
-    private static final int RUNNING = 1;
+    private Integer id;
 
     private String name;
 
-    private String uri;
-
     private String protocol;
 
-    private String ipAddress;
+    private String ipaddress;
 
-    private int port;
+    private Integer port;
 
-    private int timeCount;
+    private Integer userid;
 
-    private int streamState;
+    private Date expiredtime;
+
+    private String uri;
+
+    public Integer getId() {
+        return id;
+    }
+
+    public void setId(Integer id) {
+        this.id = id;
+    }
 
     public String getName() {
         return name;
     }
 
     public void setName(String name) {
-        this.name = name;
-    }
-
-    public String getUri() {
-        return uri;
-    }
-
-    public void setUri(String uri) {
-        this.uri = uri;
-    }
-
-    public String getIpAddress() {
-        return ipAddress;
-    }
-
-    public void setIpAddress(String ipAddress) {
-        this.ipAddress = ipAddress;
-    }
-
-    public int getPort() {
-        return port;
-    }
-
-    public void setPort(int port) {
-        this.port = port;
-    }
-
-    public int getTimeCount() {
-        return timeCount;
-    }
-
-    public void setTimeCount(int timeCount) {
-        this.timeCount = timeCount;
+        this.name = name == null ? null : name.trim();
     }
 
     public String getProtocol() {
@@ -68,15 +40,46 @@ public class Stream {
     }
 
     public void setProtocol(String protocol) {
-        this.protocol = protocol;
+        this.protocol = protocol == null ? null : protocol.trim();
     }
 
-    public Stream(String name, String ipAddress, int port, String uri){
-        super();
-        this.name = name;
-        this.ipAddress = ipAddress;
+    public String getIpaddress() {
+        return ipaddress;
+    }
+
+    public void setIpaddress(String ipaddress) {
+        this.ipaddress = ipaddress == null ? null : ipaddress.trim();
+    }
+
+    public Integer getPort() {
+        return port;
+    }
+
+    public void setPort(Integer port) {
         this.port = port;
-        this.uri = uri;
-        this.streamState = Stream.STOPPED;
+    }
+
+    public Integer getUserid() {
+        return userid;
+    }
+
+    public void setUserid(Integer userid) {
+        this.userid = userid;
+    }
+
+    public Date getExpiredtime() {
+        return expiredtime;
+    }
+
+    public void setExpiredtime(Date expiredtime) {
+        this.expiredtime = expiredtime;
+    }
+
+    public String getUri() {
+        return uri;
+    }
+
+    public void setUri(String uri) {
+        this.uri = uri == null ? null : uri.trim();
     }
 }

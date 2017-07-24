@@ -11,7 +11,7 @@ public class VdResult implements Serializable {
     private String state;
     private int code;
     private Object data;
-    private String userId;
+    private String requestId;
 
 
     public String getState() {
@@ -38,17 +38,18 @@ public class VdResult implements Serializable {
         this.data = data;
     }
 
-    public String getUserId() {
-        return userId;
+    public String getRequestId() {
+        return requestId;
     }
 
-    public void setUserId(String userId) {
-        this.userId = userId;
+    public void setRequestId(String requestId) {
+        this.requestId = requestId;
     }
 
-    public VdResult(String state, int code, Object data) {
+    public VdResult(String state, int code, Object data, String requestId) {
         this.state = state;
         this.code = code;
         this.data = data;
+        this.requestId = requestId;
     }
 }

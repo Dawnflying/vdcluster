@@ -2,25 +2,26 @@ package com.xh.vdcluster.repository.mapper;
 
 import com.xh.vdcluster.repository.model.User;
 
-/**
- * Created by macbookpro on 17/7/23.
- */
 public interface UserMapper {
-    User getUserById(int id);
+    int deleteByPrimaryKey(Integer id);
 
-    User getUserByUserId(String userId);
+    int insert(User record);
+
+    int insertSelective(User record);
+
+    User selectByPrimaryKey(Integer id);
+
+    int updateByPrimaryKeySelective(User record);
+
+    int updateByPrimaryKey(User record);
 
     User getUserByUsername(String username);
 
-    void insertUser(User user);
+    int updateUserToken(String userId, String token);
 
-    void deleteUser(int id);
-
-    void updateUser(User user);
-
-    void updateUserToken(String userId, String token);
+    User getUserByUserId(String userId);
 
     String getTokenByUserId(String userId);
 
-    Integer getGrainByUserId(String userId);
+    int getGrainByUserId(String userId);
 }

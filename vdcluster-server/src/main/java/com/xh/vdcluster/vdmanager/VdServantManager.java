@@ -1,6 +1,6 @@
 package com.xh.vdcluster.vdmanager;
 
-import com.xh.vdcluster.common.VdConfiguration;
+import com.xh.vdcluster.common.DetectServiceConfiguration;
 import com.xh.vdcluster.repository.mapper.ServantMapper;
 import com.xh.vdcluster.vdmanager.beans.VdServant;
 
@@ -20,29 +20,29 @@ public class VdServantManager {
     @Resource
     ServantMapper servantMapper;
 
-    private VdServantManager(){}
-
-    private static VdServantManager instance;
-
-    public static VdServantManager getInstance(){
-        if(instance == null)
-            instance = new VdServantManager();
-        return instance;
+    private VdServantManager() {
     }
 
-    private String generateServantId(){
+    private static VdServantManager INSTANCE = new VdServantManager();
+
+    public static VdServantManager getInstance() {
+
+        return INSTANCE;
+    }
+
+    private String generateServantId() {
         return "";
     }
 
-    public VdServant createServant(String userId, VdConfiguration configuration){
+    public VdServant createServant(String userId, DetectServiceConfiguration configuration) {
         return new VdServant(configuration);
     }
 
-    public List<VdServant> createServants(String userId, List<VdConfiguration> configurationList){
+    public List<VdServant> createServants(String userId, List<DetectServiceConfiguration> configurationList) {
 
         List<VdServant> servants = new ArrayList<VdServant>();
 
-        for(VdConfiguration configuration: configurationList){
+        for (DetectServiceConfiguration configuration : configurationList) {
             VdServant servant = new VdServant(configuration);
             servants.add(servant);
             servant.start();
@@ -54,26 +54,25 @@ public class VdServantManager {
     /**
      * 停止服务列表,如果servantIds为空,则停止用户的所有服务,如果servantIds不为空,则停止列表中
      * 所有正在运行的服务。
-     * @param userId 用户id
+     *
+     * @param userId     用户id
      * @param servantIds 服务列表
      * @return
      */
-    public List<VdServant> stopServants(String userId, List<String> servantIds){
-        List<VdServant> servants = this.getServantsAvailable(userId,servantIds);
+    public List<VdServant> stopServants(String userId, List<String> servantIds) {
+        List<VdServant> servants = this.getServantsAvailable(userId, servantIds);
 
-        for(VdServant vds:servants)
-        {
+        for (VdServant vds : servants) {
             vds.stop();
         }
         return servants;
     }
 
-    public List<VdServant> removeServants(String userId, List<String> servantIds){
+    public List<VdServant> removeServants(String userId, List<String> servantIds) {
 
-        List<VdServant> servants = this.getServantsAvailable(userId,servantIds);
+        List<VdServant> servants = this.getServantsAvailable(userId, servantIds);
 
-        for(VdServant vds:servants)
-        {
+        for (VdServant vds : servants) {
             vds.remove();
         }
         return servants;
@@ -81,24 +80,23 @@ public class VdServantManager {
 
     /**
      * 获取和用户id相关的可用的servant的列表。
+     *
      * @param userId
      * @param servantIds
      * @return
      */
-    private List<VdServant> getServantsAvailable(String userId, List<String> servantIds){
+    private List<VdServant> getServantsAvailable(String userId, List<String> servantIds) {
         List<VdServant> servants = servantMapper.getServantsByUserId(userId);
 
-        if(servantIds.size() == 0)
-        {
+        if (servantIds.size() == 0) {
             //删除当亲啊用户所有的servant
             return servants;
         }
         List<VdServant> servantsAvailable = new ArrayList<VdServant>();
 
-        for(String sid: servantIds){
-            for(VdServant servant: servants){
-                if(servant.getServantId() == sid)
-                {
+        for (String sid : servantIds) {
+            for (VdServant servant : servants) {
+                if (servant.getServantId() == sid) {
                     servantsAvailable.add(servant);
                 }
             }

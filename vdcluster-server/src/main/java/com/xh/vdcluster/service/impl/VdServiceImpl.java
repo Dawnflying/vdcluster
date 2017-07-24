@@ -2,15 +2,16 @@ package com.xh.vdcluster.service.impl;
 
 import com.xh.vdcluster.authenication.Token;
 import com.xh.vdcluster.authenication.TokenManager;
-import com.xh.vdcluster.common.VdConfiguration;
+import com.xh.vdcluster.common.DetectServiceConfiguration;
+import com.xh.vdcluster.common.Md5Utils;
 import com.xh.vdcluster.common.VdResult;
 import com.xh.vdcluster.common.VdResultErrorCode;
 import com.xh.vdcluster.repository.mapper.UserMapper;
 import com.xh.vdcluster.repository.model.User;
-import com.xh.vdcluster.service.UserService;
 import com.xh.vdcluster.service.VdService;
 import com.xh.vdcluster.vdmanager.VdServantManager;
 import com.xh.vdcluster.vdmanager.beans.VdServant;
+import org.springframework.stereotype.Component;
 
 import javax.annotation.Resource;
 import java.util.List;
@@ -18,60 +19,37 @@ import java.util.List;
 /**
  * Created by macbookpro on 17/7/22.
  */
+@Component
 public class VdServiceImpl implements VdService {
 
     @Resource
     UserMapper userMapper;
 
-    @Resource
-    UserService userService;
-
-    /**
-     * 请求识别服务,如果验证通过则自动重新生成token,用户通过token来获取服务。
-     *
-     * @param username 用户名
-     * @param password 加密后密码
-     * @return
-     */
-    @Override
-    public VdResult requestServant(String username, String password) {
-        if (userService.authenticate(username, password)) {
-            User user = userMapper.getUserByUsername(username);
-
-            Token token = TokenManager.getToken();
-
-            userMapper.updateUserToken(user.getUserId(), token.getTokenString());
-
-            return new VdResult("ok", VdResultErrorCode.AUTH_SUCCESS, token);
-        } else {
-            return new VdResult("ok", VdResultErrorCode.AUTH_FAILED, null);
-        }
-    }
 
     @Override
-    public VdResult addServant(String userId, String token, List<VdConfiguration> configurationList) {
+    public VdResult addServant(String userId, String token, List<DetectServiceConfiguration> configurationList) {
 
         if (!TokenManager.checkTokenExpiration(token))
-            return new VdResult("ok", VdResultErrorCode.TOKEN_EXPIRED, null);
+            return new VdResult("ok", VdResultErrorCode.TOKEN_EXPIRED, null, userId);
         else {
             User user = userMapper.getUserByUserId(userId);
 
             if (user == null)
-                return new VdResult("ok", VdResultErrorCode.AUTH_FAILED, null);
+                return new VdResult("ok", VdResultErrorCode.AUTH_FAILED, null, userId);
 
             String tokenStored = userMapper.getTokenByUserId(userId);
             if (tokenStored == null || tokenStored != token)
-                return new VdResult("ok", VdResultErrorCode.TOKEN_ERROR, null);
+                return new VdResult("ok", VdResultErrorCode.TOKEN_ERROR, null, userId);
 
             Integer grain = userMapper.getGrainByUserId(userId);
 
             if (configurationList.size() > grain)
-                return new VdResult("ok", VdResultErrorCode.SERVANT_OVERLOAD, null);
+                return new VdResult("ok", VdResultErrorCode.SERVANT_OVERLOAD, null, userId);
 
 
             List<VdServant> servants = VdServantManager.getInstance().createServants(userId, configurationList);
 
-            return new VdResult("ok", VdResultErrorCode.SERVANT_SUCCESS, servants);
+            return new VdResult("ok", VdResultErrorCode.SERVANT_SUCCESS, servants, userId);
         }
     }
 
@@ -79,27 +57,28 @@ public class VdServiceImpl implements VdService {
     public VdResult stopServant(String userId, String token, List<String> servantIds) {
 
         if (!TokenManager.checkTokenExpiration(token))
-            return new VdResult("ok", VdResultErrorCode.TOKEN_EXPIRED, null);
+            return new VdResult("ok", VdResultErrorCode.TOKEN_EXPIRED, null, userId);
         User user = userMapper.getUserByUserId(userId);
 
         if (user == null)
-            return new VdResult("ok", VdResultErrorCode.AUTH_FAILED, null);
+            return new VdResult("ok", VdResultErrorCode.AUTH_FAILED, null, userId);
 
         String tokenStored = userMapper.getTokenByUserId(userId);
         if (tokenStored == null || tokenStored != token)
-            return new VdResult("ok", VdResultErrorCode.TOKEN_ERROR, null);
+            return new VdResult("ok", VdResultErrorCode.TOKEN_ERROR, null, userId);
 
         List<VdServant> vdServants = VdServantManager.getInstance().stopServants(userId, servantIds);
 
-        return new VdResult("ok", VdResultErrorCode.SERVANT_SUCCESS, vdServants);
+        return new VdResult("ok", VdResultErrorCode.SERVANT_SUCCESS, vdServants, userId);
     }
 
 
     @Override
     public VdResult removeServant(String userId, String token, List<String> servantIds) {
-        List<VdServant> vdServants = VdServantManager.getInstance().removeServants(userId,servantIds);
+        List<VdServant> vdServants = VdServantManager.getInstance().removeServants(userId, servantIds);
 
-        return new VdResult("ok", VdResultErrorCode.SERVANT_SUCCESS,vdServants);
+        return new VdResult("ok", VdResultErrorCode.SERVANT_SUCCESS, vdServants, userId);
     }
+
 
 }

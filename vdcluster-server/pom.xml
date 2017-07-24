@@ -11,6 +11,11 @@
 
     <artifactId>vdcluster-server</artifactId>
     <dependencies>
+            <dependency>
+                <groupId>com.xh.videodetect</groupId>
+                <artifactId>vdcluster-common</artifactId>
+                <version>1.0-SNAPSHOT</version>
+            </dependency>
         <dependency>
             <groupId>com.xh.videodetect</groupId>
             <artifactId>vdcluster-common</artifactId>
@@ -32,8 +37,28 @@
             <artifactId>slf4j-api</artifactId>
             <version>1.7.25</version>
         </dependency>
-
     </dependencies>
 
-
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-compiler-plugin</artifactId>
+                <version>3.5.1</version>
+                <configuration>
+                    <source>1.8</source>
+                    <target>1.8</target>
+                </configuration>
+            </plugin>
+            <plugin>
+                <groupId>org.mybatis.generator</groupId>
+                <artifactId>mybatis-generator-maven-plugin</artifactId>
+                <version>1.3.2</version>
+                <configuration>
+                    <verbose>true</verbose>
+                    <overwrite>true</overwrite>
+                </configuration>
+            </plugin>
+        </plugins>
+    </build>
 </project>

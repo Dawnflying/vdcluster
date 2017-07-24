@@ -13,7 +13,7 @@
         </commentGenerator>
         <!--数据库连接的信息：驱动类、连接地址、用户名、密码 -->
         <jdbcConnection driverClass="com.mysql.jdbc.Driver"
-                        connectionURL="jdbc:mysql://10.200.9.169:3306/device_center" userId="root"
+                        connectionURL="jdbc:mysql://10.200.9.169:3306/vdcluster" userId="root"
                         password="root">
         </jdbcConnection>
         <!-- 默认false，把JDBC DECIMAL 和 NUMERIC 类型解析为 Integer，为 true时把JDBC DECIMAL 和
@@ -23,7 +23,7 @@
         </javaTypeResolver>
 
         <!-- targetProject:生成PO类的位置 -->
-        <javaModelGenerator targetPackage="com.xh.iotcore.statisticscenter.domain"
+        <javaModelGenerator targetPackage="com.xh.vdcluster.repository.model"
                             targetProject="src/main/java">
             <!-- enableSubPackages:是否让schema作为包的后缀 -->
             <property name="enableSubPackages" value="false" />
@@ -34,40 +34,21 @@
            如果maven工程只是单独的一个工程，targetProject="src/main/java"
            若果maven工程是分模块的工程，targetProject="所属模块的名称"，例如：
            targetProject="ecps-manager-mapper"，下同-->
-        <sqlMapGenerator targetPackage="com.xh.iotcore.statisticscenter.mapper"
+        <sqlMapGenerator targetPackage="com.xh.vdcluster.repository.mapper"
                          targetProject="src/main/java">
             <!-- enableSubPackages:是否让schema作为包的后缀 -->
             <property name="enableSubPackages" value="false" />
         </sqlMapGenerator>
         <!-- targetPackage：mapper接口生成的位置 -->
         <javaClientGenerator type="XMLMAPPER"
-                             targetPackage="com.xh.iotcore.statisticscenter.mapper"
+                             targetPackage="com.xh.vdcluster.repository.mapper"
                              targetProject="src/main/java">
             <!-- enableSubPackages:是否让schema作为包的后缀 -->
             <property name="enableSubPackages" value="false" />
         </javaClientGenerator>
         <!-- 指定数据库表 -->
-        <!--<table schema="" tableName="dc_device" domainObjectName="Device" enableCountByExample="false" enableUpdateByExample="false" enableDeleteByExample="false" enableSelectByExample="false" selectByExampleQueryId="false"></table>-->
-        <!--<table schema="" tableName="dc_app_system" domainObjectName="AppSystem" enableCountByExample="false" enableUpdateByExample="false" enableDeleteByExample="false" enableSelectByExample="false" selectByExampleQueryId="false"></table>-->
-        <!--<table schema="" tableName="dc_bd_fire_hazard" domainObjectName="BdFireHazard" enableCountByExample="false" enableUpdateByExample="false" enableDeleteByExample="false" enableSelectByExample="false" selectByExampleQueryId="false"></table>-->
-        <!--<table schema="" tableName="dc_bd_fire_resistant" domainObjectName="BdFireResistant" enableCountByExample="false" enableUpdateByExample="false" enableDeleteByExample="false" enableSelectByExample="false" selectByExampleQueryId="false"></table>-->
-        <!--<table schema="" tableName="dc_bd_structure" domainObjectName="BdStructure" enableCountByExample="false" enableUpdateByExample="false" enableDeleteByExample="false" enableSelectByExample="false" selectByExampleQueryId="false"></table>-->
-        <!--<table schema="" tableName="dc_bd_use_way" domainObjectName="BdUseWay" enableCountByExample="false" enableUpdateByExample="false" enableDeleteByExample="false" enableSelectByExample="false" selectByExampleQueryId="false"></table>-->
-        <!--<table schema="" tableName="dc_building" domainObjectName="BdBuilding" enableCountByExample="false" enableUpdateByExample="false" enableDeleteByExample="false" enableSelectByExample="false" selectByExampleQueryId="false"></table>-->
-        <!--<table schema="" tableName="dc_building_floor" domainObjectName="BuildingFloor" enableCountByExample="false" enableUpdateByExample="false" enableDeleteByExample="false" enableSelectByExample="false" selectByExampleQueryId="false"></table>-->
-        <!--<table schema="" tableName="dc_building_high" domainObjectName="BuildingHigh" enableCountByExample="false" enableUpdateByExample="false" enableDeleteByExample="false" enableSelectByExample="false" selectByExampleQueryId="false"></table>-->
-        <!--<table schema="" tableName="dc_building_tank" domainObjectName="BuildingTank" enableCountByExample="false" enableUpdateByExample="false" enableDeleteByExample="false" enableSelectByExample="false" selectByExampleQueryId="false"></table>-->
-        <!--<table schema="" tableName="dc_company" domainObjectName="Company" enableCountByExample="false" enableUpdateByExample="false" enableDeleteByExample="false" enableSelectByExample="false" selectByExampleQueryId="false"></table>-->
-        <!--<table schema="" tableName="dc_company_type" domainObjectName="CompanyType" enableCountByExample="false" enableUpdateByExample="false" enableDeleteByExample="false" enableSelectByExample="false" selectByExampleQueryId="false"></table>-->
-        <!--<table schema="" tableName="dc_const_tank_kv" domainObjectName="ConstTankKV" enableCountByExample="false" enableUpdateByExample="false" enableDeleteByExample="false" enableSelectByExample="false" selectByExampleQueryId="false"></table>-->
-        <!--<table schema="" tableName="dc_detector" domainObjectName="Detector" enableCountByExample="false" enableUpdateByExample="false" enableDeleteByExample="false" enableSelectByExample="false" selectByExampleQueryId="false"></table>-->
-        <!--<table schema="" tableName="dc_detector_ext" domainObjectName="DetectorExt" enableCountByExample="false" enableUpdateByExample="false" enableDeleteByExample="false" enableSelectByExample="false" selectByExampleQueryId="false"></table>-->
-        <!--<table schema="" tableName="dc_detector_log" domainObjectName="DetectorLog" enableCountByExample="false" enableUpdateByExample="false" enableDeleteByExample="false" enableSelectByExample="false" selectByExampleQueryId="false"></table>-->
-        <!--<table schema="" tableName="dc_detector_type" domainObjectName="DetectorType" enableCountByExample="false" enableUpdateByExample="false" enableDeleteByExample="false" enableSelectByExample="false" selectByExampleQueryId="false"></table>-->
-        <!--<table schema="" tableName="dc_device_ext" domainObjectName="DeviceExt" enableCountByExample="false" enableUpdateByExample="false" enableDeleteByExample="false" enableSelectByExample="false" selectByExampleQueryId="false"></table>-->
-        <!--<table schema="" tableName="dc_device_type" domainObjectName="DeviceType" enableCountByExample="false" enableUpdateByExample="false" enableDeleteByExample="false" enableSelectByExample="false" selectByExampleQueryId="false"></table>-->
-        <!--<table schema="" tableName="dc_emergence_plan" domainObjectName="EmergencePlan" enableCountByExample="false" enableUpdateByExample="false" enableDeleteByExample="false" enableSelectByExample="false" selectByExampleQueryId="false"></table>-->
-        <!--<table schema="" tableName="dc_emergence_plan_type" domainObjectName="EmergencePlanType" enableCountByExample="false" enableUpdateByExample="false" enableDeleteByExample="false" enableSelectByExample="false" selectByExampleQueryId="false"></table>-->
-        <table schema="" tableName="dc_terminal_data_log" domainObjectName="TerminalDataLog" enableCountByExample="false" enableUpdateByExample="false" enableDeleteByExample="false" enableSelectByExample="false" selectByExampleQueryId="false"></table>
+        <table schema="" tableName="servant" domainObjectName="VdServant" enableCountByExample="false" enableUpdateByExample="false" enableDeleteByExample="false" enableSelectByExample="false" selectByExampleQueryId="false"></table>
+        <table schema="" tableName="stream" domainObjectName="Stream" enableCountByExample="false" enableUpdateByExample="false" enableDeleteByExample="false" enableSelectByExample="false" selectByExampleQueryId="false"></table>
+        <table schema="" tableName="user" domainObjectName="User" enableCountByExample="false" enableUpdateByExample="false" enableDeleteByExample="false" enableSelectByExample="false" selectByExampleQueryId="false"></table>
     </context>
 </generatorConfiguration>
