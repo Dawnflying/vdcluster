@@ -8,13 +8,11 @@ import java.io.Serializable;
 public class VdResult implements Serializable {
 
 
-    public static final int AUTH_NONE = 0;
-    public static final int AUTH_SUCCESS = 1;
-    public static final int AUTH_FAILED = -1;
-
     private String state;
     private int code;
     private Object data;
+    private String userId;
+
 
     public String getState() {
         return state;
@@ -38,6 +36,14 @@ public class VdResult implements Serializable {
 
     public void setData(Object data) {
         this.data = data;
+    }
+
+    public String getUserId() {
+        return userId;
+    }
+
+    public void setUserId(String userId) {
+        this.userId = userId;
     }
 
     public VdResult(String state, int code, Object data) {

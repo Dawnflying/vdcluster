@@ -1,6 +1,6 @@
 package com.xh.vdcluster.service;
 
-import com.xh.vdcluster.model.StreamModel;
+import com.xh.vdcluster.repository.model.Stream;
 
 import java.util.List;
 
@@ -9,13 +9,13 @@ import java.util.List;
  */
 public interface StreamService {
 
-    StreamModel createStream();
+    Stream createStream();
 
-    List<StreamModel> listStreams();
+    List<Stream> listStreams();
 
-    StreamModel getStream();
+    Stream getStream();
 
-    StreamModel unregisterStream();
+    Stream unregisterStream();
 
-    boolean registerStream(StreamModel streamModel);
+    boolean registerStream(Stream streamModel);
 }

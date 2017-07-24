@@ -1,4 +1,4 @@
-package com.xh.vdcluster.registry.model;
+package com.xh.vdcluster.common;
 
 import java.io.Serializable;
 import java.util.Date;

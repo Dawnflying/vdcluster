@@ -5,10 +5,9 @@ package com.xh.vdcluster.repository.model;
  */
 public class Stream {
 
-    public enum STREAMSTATE{
-        IDLE,
-        RUNNING,
-    }
+    private static final int STOPPED = 0;
+
+    private static final int RUNNING = 1;
 
     private String name;
 
@@ -22,7 +21,7 @@ public class Stream {
 
     private int timeCount;
 
-    private STREAMSTATE streamState;
+    private int streamState;
 
     public String getName() {
         return name;
@@ -64,14 +63,6 @@ public class Stream {
         this.timeCount = timeCount;
     }
 
-    public STREAMSTATE getStreamState() {
-        return streamState;
-    }
-
-    public void setStreamState(STREAMSTATE streamState) {
-        this.streamState = streamState;
-    }
-
     public String getProtocol() {
         return protocol;
     }
@@ -86,6 +77,6 @@ public class Stream {
         this.ipAddress = ipAddress;
         this.port = port;
         this.uri = uri;
-
+        this.streamState = Stream.STOPPED;
     }
 }

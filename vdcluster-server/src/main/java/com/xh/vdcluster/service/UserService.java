@@ -1,9 +1,7 @@
 package com.xh.vdcluster.service;
 
 /**
- * Created by bloom on 2017/7/16.
+ * Created by bloom on 2017/7/24.
  */
 public interface UserService {
-
-    boolean authenticate(String name,String code);
 }

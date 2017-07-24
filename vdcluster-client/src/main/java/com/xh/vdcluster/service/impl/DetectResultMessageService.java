@@ -1,7 +1,7 @@
 package com.xh.vdcluster.service.impl;
 
 import com.xh.vdcluster.client.MessageManager;
-import com.xh.vdcluster.model.DetectResult;
+import com.xh.vdcluster.registry.model.DetectResult;
 import com.xh.vdcluster.service.MessageService;
 
 /**
