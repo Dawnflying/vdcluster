@@ -1,5 +1,6 @@
 package com.xh.vdcluster.controller;
 
+import com.xh.vdcluster.common.DetectServiceConfiguration;
 import com.xh.vdcluster.common.VdResult;
 import com.xh.vdcluster.common.VdResultErrorCode;
 import com.xh.vdcluster.common.annotation.Auth;
@@ -13,6 +14,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import javax.annotation.Resource;
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -32,45 +34,27 @@ public class StreamController {
 
     @RequestMapping("/register-stream")
     @Auth("register")
-    public VdResult registerStream(@RequestParam(name = "token") String token, @RequestBody List<Stream> streamList) {
+    public VdResult registerStream(@RequestParam(name = "token") String token, @RequestParam(name = "userId") String userId, @RequestBody List<Stream> streamList) {
         int code = tokenService.validate(token);
 
-        if(VdResultErrorCode.ISFAILED(code))
-            return new VdResult("ok", code, null);
+        if (VdResultErrorCode.ISFAILED(code))
+            return new VdResult("ok", code, null, userId);
 
-
-
-        return vdService.addServant()
+        List<DetectServiceConfiguration> configurationList = new ArrayList<>();
+        return vdService.addServant(userId, token, configurationList);
     }
 
-    @RequestMapping("/unregisterStream")
+    @RequestMapping("/unregister-stream")
     @Auth("unregister")
-    public VdResult unregisterStream(@RequestParam(name = "token") String token, @RequestParam(name = "userId") String userId, @RequestParam(name = "streamId") String streamId) {
+    public VdResult unregisterStream(@RequestParam(name = "token") String token, @RequestParam(name = "userId") String userId, @RequestParam(name = "servantId") List<String> servantIds) {
 
-        boolean bValid = tokenService.validate(token);
+        int code = tokenService.validate(token);
 
-        if (!bValid) {
-            return new VdResult("OK", VdResultErrorCode.AUTH_FAILED,null,userId);
+        if (VdResultErrorCode.ISFAILED(code)) {
+            return new VdResult("OK", code, null, userId);
         } else {
-            return new VdResult("OK",VdResultErrorCode.AUTH_SUCCESS,null,userId);
+
+            return vdService.removeServant(userId, token, servantIds);
         }
-
     }
-
-    @RequestMapping("/unregisterStreamGroup")
-    @Auth("unregister")
-    public VdResult unregisterStreamGroup(@RequestParam(name = "token") String token, @RequestParam(name = "userId") String userId) {
-
-        boolean bValid = tokenService.validate(token);
-
-        if (!bValid) {
-            return new VdResult("OK", VdResultErrorCode.AUTH_FAILED, null,userId);
-
-        } else {
-            return new VdResult("OK", VdResultErrorCode.AUTH_SUCCESS, null,userId);
-        }
-
-    }
-
-
 }

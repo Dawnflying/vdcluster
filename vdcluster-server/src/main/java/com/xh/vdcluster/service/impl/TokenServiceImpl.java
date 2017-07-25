@@ -7,8 +7,6 @@ import com.xh.vdcluster.service.TokenService;
  */
 public class TokenServiceImpl implements TokenService {
 
-
-
     @Override
     public int validate(String token) {
         return 0;

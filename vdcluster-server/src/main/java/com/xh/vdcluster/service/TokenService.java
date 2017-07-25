@@ -7,5 +7,5 @@ import com.xh.vdcluster.common.VdResultErrorCode;
  */
 public interface TokenService {
 
-    boolean validate(String token);
+    int validate(String token);
 }
