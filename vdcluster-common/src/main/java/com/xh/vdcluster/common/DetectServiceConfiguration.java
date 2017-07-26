@@ -15,8 +15,8 @@ public class DetectServiceConfiguration implements org.apache.thrift.TBase<Detec
   private static final org.apache.thrift.protocol.TField STREAM_URL_FIELD_DESC = new org.apache.thrift.protocol.TField("streamURL", org.apache.thrift.protocol.TType.STRING, (short)2);
   private static final org.apache.thrift.protocol.TField STREAM_TYPE_FIELD_DESC = new org.apache.thrift.protocol.TField("streamType", org.apache.thrift.protocol.TType.I32, (short)3);
   private static final org.apache.thrift.protocol.TField DECODE_MODE_FIELD_DESC = new org.apache.thrift.protocol.TField("decodeMode", org.apache.thrift.protocol.TType.I32, (short)4);
-  private static final org.apache.thrift.protocol.TField FRAME_WIDTH_FIELD_DESC = new org.apache.thrift.protocol.TField("frameWidth", org.apache.thrift.protocol.TType.DOUBLE, (short)5);
-  private static final org.apache.thrift.protocol.TField FRAME_HEIGHT_FIELD_DESC = new org.apache.thrift.protocol.TField("frameHeight", org.apache.thrift.protocol.TType.DOUBLE, (short)6);
+  private static final org.apache.thrift.protocol.TField FRAME_WIDTH_FIELD_DESC = new org.apache.thrift.protocol.TField("frameWidth", org.apache.thrift.protocol.TType.I32, (short)5);
+  private static final org.apache.thrift.protocol.TField FRAME_HEIGHT_FIELD_DESC = new org.apache.thrift.protocol.TField("frameHeight", org.apache.thrift.protocol.TType.I32, (short)6);
   private static final org.apache.thrift.protocol.TField DETECT_TYPE_FIELD_DESC = new org.apache.thrift.protocol.TField("detectType", org.apache.thrift.protocol.TType.LIST, (short)7);
 
   private static final org.apache.thrift.scheme.SchemeFactory STANDARD_SCHEME_FACTORY = new DetectServiceConfigurationStandardSchemeFactory();
@@ -26,8 +26,8 @@ public class DetectServiceConfiguration implements org.apache.thrift.TBase<Detec
   public String streamURL; // required
   public int streamType; // required
   public int decodeMode; // required
-  public double frameWidth; // required
-  public double frameHeight; // required
+  public int frameWidth; // required
+  public int frameHeight; // required
   public java.util.List<DetectType> detectType; // required
 
   /** The set of fields this struct contains, along with convenience methods for finding and manipulating them. */
@@ -124,9 +124,9 @@ public class DetectServiceConfiguration implements org.apache.thrift.TBase<Detec
     tmpMap.put(_Fields.DECODE_MODE, new org.apache.thrift.meta_data.FieldMetaData("decodeMode", org.apache.thrift.TFieldRequirementType.REQUIRED, 
         new org.apache.thrift.meta_data.FieldValueMetaData(org.apache.thrift.protocol.TType.I32)));
     tmpMap.put(_Fields.FRAME_WIDTH, new org.apache.thrift.meta_data.FieldMetaData("frameWidth", org.apache.thrift.TFieldRequirementType.REQUIRED, 
-        new org.apache.thrift.meta_data.FieldValueMetaData(org.apache.thrift.protocol.TType.DOUBLE)));
+        new org.apache.thrift.meta_data.FieldValueMetaData(org.apache.thrift.protocol.TType.I32)));
     tmpMap.put(_Fields.FRAME_HEIGHT, new org.apache.thrift.meta_data.FieldMetaData("frameHeight", org.apache.thrift.TFieldRequirementType.REQUIRED, 
-        new org.apache.thrift.meta_data.FieldValueMetaData(org.apache.thrift.protocol.TType.DOUBLE)));
+        new org.apache.thrift.meta_data.FieldValueMetaData(org.apache.thrift.protocol.TType.I32)));
     tmpMap.put(_Fields.DETECT_TYPE, new org.apache.thrift.meta_data.FieldMetaData("detectType", org.apache.thrift.TFieldRequirementType.REQUIRED, 
         new org.apache.thrift.meta_data.ListMetaData(org.apache.thrift.protocol.TType.LIST, 
             new org.apache.thrift.meta_data.StructMetaData(org.apache.thrift.protocol.TType.STRUCT, DetectType.class))));
@@ -142,8 +142,8 @@ public class DetectServiceConfiguration implements org.apache.thrift.TBase<Detec
     String streamURL,
     int streamType,
     int decodeMode,
-    double frameWidth,
-    double frameHeight,
+    int frameWidth,
+    int frameHeight,
     java.util.List<DetectType> detectType)
   {
     this();
@@ -197,9 +197,9 @@ public class DetectServiceConfiguration implements org.apache.thrift.TBase<Detec
     setDecodeModeIsSet(false);
     this.decodeMode = 0;
     setFrameWidthIsSet(false);
-    this.frameWidth = 0.0;
+    this.frameWidth = 0;
     setFrameHeightIsSet(false);
-    this.frameHeight = 0.0;
+    this.frameHeight = 0;
     this.detectType = null;
   }
 
@@ -297,11 +297,11 @@ public class DetectServiceConfiguration implements org.apache.thrift.TBase<Detec
     __isset_bitfield = org.apache.thrift.EncodingUtils.setBit(__isset_bitfield, __DECODEMODE_ISSET_ID, value);
   }
 
-  public double getFrameWidth() {
+  public int getFrameWidth() {
     return this.frameWidth;
   }
 
-  public DetectServiceConfiguration setFrameWidth(double frameWidth) {
+  public DetectServiceConfiguration setFrameWidth(int frameWidth) {
     this.frameWidth = frameWidth;
     setFrameWidthIsSet(true);
     return this;
@@ -320,11 +320,11 @@ public class DetectServiceConfiguration implements org.apache.thrift.TBase<Detec
     __isset_bitfield = org.apache.thrift.EncodingUtils.setBit(__isset_bitfield, __FRAMEWIDTH_ISSET_ID, value);
   }
 
-  public double getFrameHeight() {
+  public int getFrameHeight() {
     return this.frameHeight;
   }
 
-  public DetectServiceConfiguration setFrameHeight(double frameHeight) {
+  public DetectServiceConfiguration setFrameHeight(int frameHeight) {
     this.frameHeight = frameHeight;
     setFrameHeightIsSet(true);
     return this;
@@ -420,7 +420,7 @@ public class DetectServiceConfiguration implements org.apache.thrift.TBase<Detec
       if (value == null) {
         unsetFrameWidth();
       } else {
-        setFrameWidth((Double)value);
+        setFrameWidth((Integer)value);
       }
       break;
 
@@ -428,7 +428,7 @@ public class DetectServiceConfiguration implements org.apache.thrift.TBase<Detec
       if (value == null) {
         unsetFrameHeight();
       } else {
-        setFrameHeight((Double)value);
+        setFrameHeight((Integer)value);
       }
       break;
 
@@ -592,9 +592,9 @@ public class DetectServiceConfiguration implements org.apache.thrift.TBase<Detec
 
     hashCode = hashCode * 8191 + decodeMode;
 
-    hashCode = hashCode * 8191 + org.apache.thrift.TBaseHelper.hashCode(frameWidth);
+    hashCode = hashCode * 8191 + frameWidth;
 
-    hashCode = hashCode * 8191 + org.apache.thrift.TBaseHelper.hashCode(frameHeight);
+    hashCode = hashCode * 8191 + frameHeight;
 
     hashCode = hashCode * 8191 + ((isSetDetectType()) ? 131071 : 524287);
     if (isSetDetectType())
@@ -831,16 +831,16 @@ public class DetectServiceConfiguration implements org.apache.thrift.TBase<Detec
             }
             break;
           case 5: // FRAME_WIDTH
-            if (schemeField.type == org.apache.thrift.protocol.TType.DOUBLE) {
-              struct.frameWidth = iprot.readDouble();
+            if (schemeField.type == org.apache.thrift.protocol.TType.I32) {
+              struct.frameWidth = iprot.readI32();
               struct.setFrameWidthIsSet(true);
             } else { 
               org.apache.thrift.protocol.TProtocolUtil.skip(iprot, schemeField.type);
             }
             break;
           case 6: // FRAME_HEIGHT
-            if (schemeField.type == org.apache.thrift.protocol.TType.DOUBLE) {
-              struct.frameHeight = iprot.readDouble();
+            if (schemeField.type == org.apache.thrift.protocol.TType.I32) {
+              struct.frameHeight = iprot.readI32();
               struct.setFrameHeightIsSet(true);
             } else { 
               org.apache.thrift.protocol.TProtocolUtil.skip(iprot, schemeField.type);
@@ -849,14 +849,14 @@ public class DetectServiceConfiguration implements org.apache.thrift.TBase<Detec
           case 7: // DETECT_TYPE
             if (schemeField.type == org.apache.thrift.protocol.TType.LIST) {
               {
-                org.apache.thrift.protocol.TList _list8 = iprot.readListBegin();
-                struct.detectType = new java.util.ArrayList<DetectType>(_list8.size);
-                DetectType _elem9;
-                for (int _i10 = 0; _i10 < _list8.size; ++_i10)
+                org.apache.thrift.protocol.TList _list24 = iprot.readListBegin();
+                struct.detectType = new java.util.ArrayList<DetectType>(_list24.size);
+                DetectType _elem25;
+                for (int _i26 = 0; _i26 < _list24.size; ++_i26)
                 {
-                  _elem9 = new DetectType();
-                  _elem9.read(iprot);
-                  struct.detectType.add(_elem9);
+                  _elem25 = new DetectType();
+                  _elem25.read(iprot);
+                  struct.detectType.add(_elem25);
                 }
                 iprot.readListEnd();
               }
@@ -909,18 +909,18 @@ public class DetectServiceConfiguration implements org.apache.thrift.TBase<Detec
       oprot.writeI32(struct.decodeMode);
       oprot.writeFieldEnd();
       oprot.writeFieldBegin(FRAME_WIDTH_FIELD_DESC);
-      oprot.writeDouble(struct.frameWidth);
+      oprot.writeI32(struct.frameWidth);
       oprot.writeFieldEnd();
       oprot.writeFieldBegin(FRAME_HEIGHT_FIELD_DESC);
-      oprot.writeDouble(struct.frameHeight);
+      oprot.writeI32(struct.frameHeight);
       oprot.writeFieldEnd();
       if (struct.detectType != null) {
         oprot.writeFieldBegin(DETECT_TYPE_FIELD_DESC);
         {
           oprot.writeListBegin(new org.apache.thrift.protocol.TList(org.apache.thrift.protocol.TType.STRUCT, struct.detectType.size()));
-          for (DetectType _iter11 : struct.detectType)
+          for (DetectType _iter27 : struct.detectType)
           {
-            _iter11.write(oprot);
+            _iter27.write(oprot);
           }
           oprot.writeListEnd();
         }
@@ -947,13 +947,13 @@ public class DetectServiceConfiguration implements org.apache.thrift.TBase<Detec
       oprot.writeString(struct.streamURL);
       oprot.writeI32(struct.streamType);
       oprot.writeI32(struct.decodeMode);
-      oprot.writeDouble(struct.frameWidth);
-      oprot.writeDouble(struct.frameHeight);
+      oprot.writeI32(struct.frameWidth);
+      oprot.writeI32(struct.frameHeight);
       {
         oprot.writeI32(struct.detectType.size());
-        for (DetectType _iter12 : struct.detectType)
+        for (DetectType _iter28 : struct.detectType)
         {
-          _iter12.write(oprot);
+          _iter28.write(oprot);
         }
       }
     }
@@ -969,19 +969,19 @@ public class DetectServiceConfiguration implements org.apache.thrift.TBase<Detec
       struct.setStreamTypeIsSet(true);
       struct.decodeMode = iprot.readI32();
       struct.setDecodeModeIsSet(true);
-      struct.frameWidth = iprot.readDouble();
+      struct.frameWidth = iprot.readI32();
       struct.setFrameWidthIsSet(true);
-      struct.frameHeight = iprot.readDouble();
+      struct.frameHeight = iprot.readI32();
       struct.setFrameHeightIsSet(true);
       {
-        org.apache.thrift.protocol.TList _list13 = new org.apache.thrift.protocol.TList(org.apache.thrift.protocol.TType.STRUCT, iprot.readI32());
-        struct.detectType = new java.util.ArrayList<DetectType>(_list13.size);
-        DetectType _elem14;
-        for (int _i15 = 0; _i15 < _list13.size; ++_i15)
+        org.apache.thrift.protocol.TList _list29 = new org.apache.thrift.protocol.TList(org.apache.thrift.protocol.TType.STRUCT, iprot.readI32());
+        struct.detectType = new java.util.ArrayList<DetectType>(_list29.size);
+        DetectType _elem30;
+        for (int _i31 = 0; _i31 < _list29.size; ++_i31)
         {
-          _elem14 = new DetectType();
-          _elem14.read(iprot);
-          struct.detectType.add(_elem14);
+          _elem30 = new DetectType();
+          _elem30.read(iprot);
+          struct.detectType.add(_elem30);
         }
       }
       struct.setDetectTypeIsSet(true);

@@ -12,7 +12,7 @@ public interface VdService {
 
     VdResult addServant(String userId, String token, List<DetectServiceConfiguration> configuration);
 
-    VdResult stopServant(String userId, String token, List<String> servantId);
+    VdResult stopServant(String userId, String token, List<String> servantIds);
 
-    VdResult removeServant(String userId, String token, List<String> servantId);
+    VdResult removeServant(String userId, String token, List<String> servantIds);
 }

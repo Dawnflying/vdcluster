@@ -41,20 +41,26 @@ public class StreamController {
             return new VdResult("ok", code, null, userId);
 
         List<DetectServiceConfiguration> configurationList = new ArrayList<>();
+
         return vdService.addServant(userId, token, configurationList);
     }
 
-    @RequestMapping("/unregister-stream")
+    @RequestMapping("/unregisterStream")
     @Auth("unregister")
-    public VdResult unregisterStream(@RequestParam(name = "token") String token, @RequestParam(name = "userId") String userId, @RequestParam(name = "servantId") List<String> servantIds) {
+    public VdResult unregisterStream(@RequestParam(name = "token") String token, @RequestParam(name = "userId") String userId, @RequestParam(name = "servantIds") List<String> servantIds) {
 
         int code = tokenService.validate(token);
 
         if (VdResultErrorCode.ISFAILED(code)) {
-            return new VdResult("OK", code, null, userId);
+
+
+            return new VdResult("OK", VdResultErrorCode.AUTH_FAILED, null, userId);
+
         } else {
+
 
             return vdService.removeServant(userId, token, servantIds);
         }
     }
+
 }

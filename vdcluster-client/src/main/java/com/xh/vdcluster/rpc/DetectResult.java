@@ -13,41 +13,38 @@ public class DetectResult implements org.apache.thrift.TBase<DetectResult, Detec
 
   private static final org.apache.thrift.protocol.TField SERVICE_ID_FIELD_DESC = new org.apache.thrift.protocol.TField("serviceId", org.apache.thrift.protocol.TType.STRING, (short)1);
   private static final org.apache.thrift.protocol.TField HIT_TIME_FIELD_DESC = new org.apache.thrift.protocol.TField("hitTime", org.apache.thrift.protocol.TType.STRING, (short)2);
-  private static final org.apache.thrift.protocol.TField HIT_TYPE_FIELD_DESC = new org.apache.thrift.protocol.TField("hitType", org.apache.thrift.protocol.TType.I32, (short)3);
-  private static final org.apache.thrift.protocol.TField CONFIDENCE_THRESHOLD_FIELD_DESC = new org.apache.thrift.protocol.TField("confidenceThreshold", org.apache.thrift.protocol.TType.DOUBLE, (short)4);
-  private static final org.apache.thrift.protocol.TField RECT_X_FIELD_DESC = new org.apache.thrift.protocol.TField("rectX", org.apache.thrift.protocol.TType.DOUBLE, (short)5);
-  private static final org.apache.thrift.protocol.TField RECT_Y_FIELD_DESC = new org.apache.thrift.protocol.TField("rectY", org.apache.thrift.protocol.TType.DOUBLE, (short)6);
-  private static final org.apache.thrift.protocol.TField HEIGHT_FIELD_DESC = new org.apache.thrift.protocol.TField("height", org.apache.thrift.protocol.TType.DOUBLE, (short)7);
-  private static final org.apache.thrift.protocol.TField WIDTH_FIELD_DESC = new org.apache.thrift.protocol.TField("width", org.apache.thrift.protocol.TType.DOUBLE, (short)8);
-  private static final org.apache.thrift.protocol.TField PREVIEW_PICTURES_FIELD_DESC = new org.apache.thrift.protocol.TField("previewPictures", org.apache.thrift.protocol.TType.LIST, (short)9);
-  private static final org.apache.thrift.protocol.TField VIDEO_URL_FIELD_DESC = new org.apache.thrift.protocol.TField("videoURL", org.apache.thrift.protocol.TType.STRING, (short)10);
+  private static final org.apache.thrift.protocol.TField HEIGHT_FIELD_DESC = new org.apache.thrift.protocol.TField("height", org.apache.thrift.protocol.TType.I32, (short)3);
+  private static final org.apache.thrift.protocol.TField WIDTH_FIELD_DESC = new org.apache.thrift.protocol.TField("width", org.apache.thrift.protocol.TType.I32, (short)4);
+  private static final org.apache.thrift.protocol.TField REG_TYPES_FIELD_DESC = new org.apache.thrift.protocol.TField("regTypes", org.apache.thrift.protocol.TType.LIST, (short)5);
+  private static final org.apache.thrift.protocol.TField REG_SCORES_FIELD_DESC = new org.apache.thrift.protocol.TField("regScores", org.apache.thrift.protocol.TType.LIST, (short)6);
+  private static final org.apache.thrift.protocol.TField RECTS_FIELD_DESC = new org.apache.thrift.protocol.TField("rects", org.apache.thrift.protocol.TType.LIST, (short)7);
+  private static final org.apache.thrift.protocol.TField PREVIEW_PIC_URL_FIELD_DESC = new org.apache.thrift.protocol.TField("previewPicURL", org.apache.thrift.protocol.TType.STRING, (short)8);
+  private static final org.apache.thrift.protocol.TField VIDEO_URL_FIELD_DESC = new org.apache.thrift.protocol.TField("videoURL", org.apache.thrift.protocol.TType.STRING, (short)9);
 
   private static final org.apache.thrift.scheme.SchemeFactory STANDARD_SCHEME_FACTORY = new DetectResultStandardSchemeFactory();
   private static final org.apache.thrift.scheme.SchemeFactory TUPLE_SCHEME_FACTORY = new DetectResultTupleSchemeFactory();
 
   public String serviceId; // required
   public String hitTime; // required
-  public int hitType; // required
-  public double confidenceThreshold; // required
-  public double rectX; // required
-  public double rectY; // required
-  public double height; // required
-  public double width; // required
-  public java.util.List<String> previewPictures; // required
+  public int height; // required
+  public int width; // required
+  public java.util.List<Integer> regTypes; // required
+  public java.util.List<Double> regScores; // required
+  public java.util.List<RegRect> rects; // required
+  public String previewPicURL; // required
   public String videoURL; // required
 
   /** The set of fields this struct contains, along with convenience methods for finding and manipulating them. */
   public enum _Fields implements org.apache.thrift.TFieldIdEnum {
     SERVICE_ID((short)1, "serviceId"),
     HIT_TIME((short)2, "hitTime"),
-    HIT_TYPE((short)3, "hitType"),
-    CONFIDENCE_THRESHOLD((short)4, "confidenceThreshold"),
-    RECT_X((short)5, "rectX"),
-    RECT_Y((short)6, "rectY"),
-    HEIGHT((short)7, "height"),
-    WIDTH((short)8, "width"),
-    PREVIEW_PICTURES((short)9, "previewPictures"),
-    VIDEO_URL((short)10, "videoURL");
+    HEIGHT((short)3, "height"),
+    WIDTH((short)4, "width"),
+    REG_TYPES((short)5, "regTypes"),
+    REG_SCORES((short)6, "regScores"),
+    RECTS((short)7, "rects"),
+    PREVIEW_PIC_URL((short)8, "previewPicURL"),
+    VIDEO_URL((short)9, "videoURL");
 
     private static final java.util.Map<String, _Fields> byName = new java.util.HashMap<String, _Fields>();
 
@@ -66,21 +63,19 @@ public class DetectResult implements org.apache.thrift.TBase<DetectResult, Detec
           return SERVICE_ID;
         case 2: // HIT_TIME
           return HIT_TIME;
-        case 3: // HIT_TYPE
-          return HIT_TYPE;
-        case 4: // CONFIDENCE_THRESHOLD
-          return CONFIDENCE_THRESHOLD;
-        case 5: // RECT_X
-          return RECT_X;
-        case 6: // RECT_Y
-          return RECT_Y;
-        case 7: // HEIGHT
+        case 3: // HEIGHT
           return HEIGHT;
-        case 8: // WIDTH
+        case 4: // WIDTH
           return WIDTH;
-        case 9: // PREVIEW_PICTURES
-          return PREVIEW_PICTURES;
-        case 10: // VIDEO_URL
+        case 5: // REG_TYPES
+          return REG_TYPES;
+        case 6: // REG_SCORES
+          return REG_SCORES;
+        case 7: // RECTS
+          return RECTS;
+        case 8: // PREVIEW_PIC_URL
+          return PREVIEW_PIC_URL;
+        case 9: // VIDEO_URL
           return VIDEO_URL;
         default:
           return null;
@@ -122,12 +117,8 @@ public class DetectResult implements org.apache.thrift.TBase<DetectResult, Detec
   }
 
   // isset id assignments
-  private static final int __HITTYPE_ISSET_ID = 0;
-  private static final int __CONFIDENCETHRESHOLD_ISSET_ID = 1;
-  private static final int __RECTX_ISSET_ID = 2;
-  private static final int __RECTY_ISSET_ID = 3;
-  private static final int __HEIGHT_ISSET_ID = 4;
-  private static final int __WIDTH_ISSET_ID = 5;
+  private static final int __HEIGHT_ISSET_ID = 0;
+  private static final int __WIDTH_ISSET_ID = 1;
   private byte __isset_bitfield = 0;
   public static final java.util.Map<_Fields, org.apache.thrift.meta_data.FieldMetaData> metaDataMap;
   static {
@@ -136,21 +127,21 @@ public class DetectResult implements org.apache.thrift.TBase<DetectResult, Detec
         new org.apache.thrift.meta_data.FieldValueMetaData(org.apache.thrift.protocol.TType.STRING)));
     tmpMap.put(_Fields.HIT_TIME, new org.apache.thrift.meta_data.FieldMetaData("hitTime", org.apache.thrift.TFieldRequirementType.REQUIRED, 
         new org.apache.thrift.meta_data.FieldValueMetaData(org.apache.thrift.protocol.TType.STRING)));
-    tmpMap.put(_Fields.HIT_TYPE, new org.apache.thrift.meta_data.FieldMetaData("hitType", org.apache.thrift.TFieldRequirementType.REQUIRED, 
-        new org.apache.thrift.meta_data.FieldValueMetaData(org.apache.thrift.protocol.TType.I32)));
-    tmpMap.put(_Fields.CONFIDENCE_THRESHOLD, new org.apache.thrift.meta_data.FieldMetaData("confidenceThreshold", org.apache.thrift.TFieldRequirementType.REQUIRED, 
-        new org.apache.thrift.meta_data.FieldValueMetaData(org.apache.thrift.protocol.TType.DOUBLE)));
-    tmpMap.put(_Fields.RECT_X, new org.apache.thrift.meta_data.FieldMetaData("rectX", org.apache.thrift.TFieldRequirementType.REQUIRED, 
-        new org.apache.thrift.meta_data.FieldValueMetaData(org.apache.thrift.protocol.TType.DOUBLE)));
-    tmpMap.put(_Fields.RECT_Y, new org.apache.thrift.meta_data.FieldMetaData("rectY", org.apache.thrift.TFieldRequirementType.REQUIRED, 
-        new org.apache.thrift.meta_data.FieldValueMetaData(org.apache.thrift.protocol.TType.DOUBLE)));
     tmpMap.put(_Fields.HEIGHT, new org.apache.thrift.meta_data.FieldMetaData("height", org.apache.thrift.TFieldRequirementType.REQUIRED, 
-        new org.apache.thrift.meta_data.FieldValueMetaData(org.apache.thrift.protocol.TType.DOUBLE)));
+        new org.apache.thrift.meta_data.FieldValueMetaData(org.apache.thrift.protocol.TType.I32)));
     tmpMap.put(_Fields.WIDTH, new org.apache.thrift.meta_data.FieldMetaData("width", org.apache.thrift.TFieldRequirementType.REQUIRED, 
-        new org.apache.thrift.meta_data.FieldValueMetaData(org.apache.thrift.protocol.TType.DOUBLE)));
-    tmpMap.put(_Fields.PREVIEW_PICTURES, new org.apache.thrift.meta_data.FieldMetaData("previewPictures", org.apache.thrift.TFieldRequirementType.REQUIRED, 
+        new org.apache.thrift.meta_data.FieldValueMetaData(org.apache.thrift.protocol.TType.I32)));
+    tmpMap.put(_Fields.REG_TYPES, new org.apache.thrift.meta_data.FieldMetaData("regTypes", org.apache.thrift.TFieldRequirementType.REQUIRED, 
         new org.apache.thrift.meta_data.ListMetaData(org.apache.thrift.protocol.TType.LIST, 
-            new org.apache.thrift.meta_data.FieldValueMetaData(org.apache.thrift.protocol.TType.STRING))));
+            new org.apache.thrift.meta_data.FieldValueMetaData(org.apache.thrift.protocol.TType.I32))));
+    tmpMap.put(_Fields.REG_SCORES, new org.apache.thrift.meta_data.FieldMetaData("regScores", org.apache.thrift.TFieldRequirementType.REQUIRED, 
+        new org.apache.thrift.meta_data.ListMetaData(org.apache.thrift.protocol.TType.LIST, 
+            new org.apache.thrift.meta_data.FieldValueMetaData(org.apache.thrift.protocol.TType.DOUBLE))));
+    tmpMap.put(_Fields.RECTS, new org.apache.thrift.meta_data.FieldMetaData("rects", org.apache.thrift.TFieldRequirementType.REQUIRED, 
+        new org.apache.thrift.meta_data.ListMetaData(org.apache.thrift.protocol.TType.LIST, 
+            new org.apache.thrift.meta_data.StructMetaData(org.apache.thrift.protocol.TType.STRUCT, RegRect.class))));
+    tmpMap.put(_Fields.PREVIEW_PIC_URL, new org.apache.thrift.meta_data.FieldMetaData("previewPicURL", org.apache.thrift.TFieldRequirementType.REQUIRED, 
+        new org.apache.thrift.meta_data.FieldValueMetaData(org.apache.thrift.protocol.TType.STRING)));
     tmpMap.put(_Fields.VIDEO_URL, new org.apache.thrift.meta_data.FieldMetaData("videoURL", org.apache.thrift.TFieldRequirementType.REQUIRED, 
         new org.apache.thrift.meta_data.FieldValueMetaData(org.apache.thrift.protocol.TType.STRING)));
     metaDataMap = java.util.Collections.unmodifiableMap(tmpMap);
@@ -163,31 +154,25 @@ public class DetectResult implements org.apache.thrift.TBase<DetectResult, Detec
   public DetectResult(
     String serviceId,
     String hitTime,
-    int hitType,
-    double confidenceThreshold,
-    double rectX,
-    double rectY,
-    double height,
-    double width,
-    java.util.List<String> previewPictures,
+    int height,
+    int width,
+    java.util.List<Integer> regTypes,
+    java.util.List<Double> regScores,
+    java.util.List<RegRect> rects,
+    String previewPicURL,
     String videoURL)
   {
     this();
     this.serviceId = serviceId;
     this.hitTime = hitTime;
-    this.hitType = hitType;
-    setHitTypeIsSet(true);
-    this.confidenceThreshold = confidenceThreshold;
-    setConfidenceThresholdIsSet(true);
-    this.rectX = rectX;
-    setRectXIsSet(true);
-    this.rectY = rectY;
-    setRectYIsSet(true);
     this.height = height;
     setHeightIsSet(true);
     this.width = width;
     setWidthIsSet(true);
-    this.previewPictures = previewPictures;
+    this.regTypes = regTypes;
+    this.regScores = regScores;
+    this.rects = rects;
+    this.previewPicURL = previewPicURL;
     this.videoURL = videoURL;
   }
 
@@ -202,15 +187,25 @@ public class DetectResult implements org.apache.thrift.TBase<DetectResult, Detec
     if (other.isSetHitTime()) {
       this.hitTime = other.hitTime;
     }
-    this.hitType = other.hitType;
-    this.confidenceThreshold = other.confidenceThreshold;
-    this.rectX = other.rectX;
-    this.rectY = other.rectY;
     this.height = other.height;
     this.width = other.width;
-    if (other.isSetPreviewPictures()) {
-      java.util.List<String> __this__previewPictures = new java.util.ArrayList<String>(other.previewPictures);
-      this.previewPictures = __this__previewPictures;
+    if (other.isSetRegTypes()) {
+      java.util.List<Integer> __this__regTypes = new java.util.ArrayList<Integer>(other.regTypes);
+      this.regTypes = __this__regTypes;
+    }
+    if (other.isSetRegScores()) {
+      java.util.List<Double> __this__regScores = new java.util.ArrayList<Double>(other.regScores);
+      this.regScores = __this__regScores;
+    }
+    if (other.isSetRects()) {
+      java.util.List<RegRect> __this__rects = new java.util.ArrayList<RegRect>(other.rects.size());
+      for (RegRect other_element : other.rects) {
+        __this__rects.add(new RegRect(other_element));
+      }
+      this.rects = __this__rects;
+    }
+    if (other.isSetPreviewPicURL()) {
+      this.previewPicURL = other.previewPicURL;
     }
     if (other.isSetVideoURL()) {
       this.videoURL = other.videoURL;
@@ -225,19 +220,14 @@ public class DetectResult implements org.apache.thrift.TBase<DetectResult, Detec
   public void clear() {
     this.serviceId = null;
     this.hitTime = null;
-    setHitTypeIsSet(false);
-    this.hitType = 0;
-    setConfidenceThresholdIsSet(false);
-    this.confidenceThreshold = 0.0;
-    setRectXIsSet(false);
-    this.rectX = 0.0;
-    setRectYIsSet(false);
-    this.rectY = 0.0;
     setHeightIsSet(false);
-    this.height = 0.0;
+    this.height = 0;
     setWidthIsSet(false);
-    this.width = 0.0;
-    this.previewPictures = null;
+    this.width = 0;
+    this.regTypes = null;
+    this.regScores = null;
+    this.rects = null;
+    this.previewPicURL = null;
     this.videoURL = null;
   }
 
@@ -289,103 +279,11 @@ public class DetectResult implements org.apache.thrift.TBase<DetectResult, Detec
     }
   }
 
-  public int getHitType() {
-    return this.hitType;
-  }
-
-  public DetectResult setHitType(int hitType) {
-    this.hitType = hitType;
-    setHitTypeIsSet(true);
-    return this;
-  }
-
-  public void unsetHitType() {
-    __isset_bitfield = org.apache.thrift.EncodingUtils.clearBit(__isset_bitfield, __HITTYPE_ISSET_ID);
-  }
-
-  /** Returns true if field hitType is set (has been assigned a value) and false otherwise */
-  public boolean isSetHitType() {
-    return org.apache.thrift.EncodingUtils.testBit(__isset_bitfield, __HITTYPE_ISSET_ID);
-  }
-
-  public void setHitTypeIsSet(boolean value) {
-    __isset_bitfield = org.apache.thrift.EncodingUtils.setBit(__isset_bitfield, __HITTYPE_ISSET_ID, value);
-  }
-
-  public double getConfidenceThreshold() {
-    return this.confidenceThreshold;
-  }
-
-  public DetectResult setConfidenceThreshold(double confidenceThreshold) {
-    this.confidenceThreshold = confidenceThreshold;
-    setConfidenceThresholdIsSet(true);
-    return this;
-  }
-
-  public void unsetConfidenceThreshold() {
-    __isset_bitfield = org.apache.thrift.EncodingUtils.clearBit(__isset_bitfield, __CONFIDENCETHRESHOLD_ISSET_ID);
-  }
-
-  /** Returns true if field confidenceThreshold is set (has been assigned a value) and false otherwise */
-  public boolean isSetConfidenceThreshold() {
-    return org.apache.thrift.EncodingUtils.testBit(__isset_bitfield, __CONFIDENCETHRESHOLD_ISSET_ID);
-  }
-
-  public void setConfidenceThresholdIsSet(boolean value) {
-    __isset_bitfield = org.apache.thrift.EncodingUtils.setBit(__isset_bitfield, __CONFIDENCETHRESHOLD_ISSET_ID, value);
-  }
-
-  public double getRectX() {
-    return this.rectX;
-  }
-
-  public DetectResult setRectX(double rectX) {
-    this.rectX = rectX;
-    setRectXIsSet(true);
-    return this;
-  }
-
-  public void unsetRectX() {
-    __isset_bitfield = org.apache.thrift.EncodingUtils.clearBit(__isset_bitfield, __RECTX_ISSET_ID);
-  }
-
-  /** Returns true if field rectX is set (has been assigned a value) and false otherwise */
-  public boolean isSetRectX() {
-    return org.apache.thrift.EncodingUtils.testBit(__isset_bitfield, __RECTX_ISSET_ID);
-  }
-
-  public void setRectXIsSet(boolean value) {
-    __isset_bitfield = org.apache.thrift.EncodingUtils.setBit(__isset_bitfield, __RECTX_ISSET_ID, value);
-  }
-
-  public double getRectY() {
-    return this.rectY;
-  }
-
-  public DetectResult setRectY(double rectY) {
-    this.rectY = rectY;
-    setRectYIsSet(true);
-    return this;
-  }
-
-  public void unsetRectY() {
-    __isset_bitfield = org.apache.thrift.EncodingUtils.clearBit(__isset_bitfield, __RECTY_ISSET_ID);
-  }
-
-  /** Returns true if field rectY is set (has been assigned a value) and false otherwise */
-  public boolean isSetRectY() {
-    return org.apache.thrift.EncodingUtils.testBit(__isset_bitfield, __RECTY_ISSET_ID);
-  }
-
-  public void setRectYIsSet(boolean value) {
-    __isset_bitfield = org.apache.thrift.EncodingUtils.setBit(__isset_bitfield, __RECTY_ISSET_ID, value);
-  }
-
-  public double getHeight() {
+  public int getHeight() {
     return this.height;
   }
 
-  public DetectResult setHeight(double height) {
+  public DetectResult setHeight(int height) {
     this.height = height;
     setHeightIsSet(true);
     return this;
@@ -404,11 +302,11 @@ public class DetectResult implements org.apache.thrift.TBase<DetectResult, Detec
     __isset_bitfield = org.apache.thrift.EncodingUtils.setBit(__isset_bitfield, __HEIGHT_ISSET_ID, value);
   }
 
-  public double getWidth() {
+  public int getWidth() {
     return this.width;
   }
 
-  public DetectResult setWidth(double width) {
+  public DetectResult setWidth(int width) {
     this.width = width;
     setWidthIsSet(true);
     return this;
@@ -427,42 +325,144 @@ public class DetectResult implements org.apache.thrift.TBase<DetectResult, Detec
     __isset_bitfield = org.apache.thrift.EncodingUtils.setBit(__isset_bitfield, __WIDTH_ISSET_ID, value);
   }
 
-  public int getPreviewPicturesSize() {
-    return (this.previewPictures == null) ? 0 : this.previewPictures.size();
+  public int getRegTypesSize() {
+    return (this.regTypes == null) ? 0 : this.regTypes.size();
   }
 
-  public java.util.Iterator<String> getPreviewPicturesIterator() {
-    return (this.previewPictures == null) ? null : this.previewPictures.iterator();
+  public java.util.Iterator<Integer> getRegTypesIterator() {
+    return (this.regTypes == null) ? null : this.regTypes.iterator();
   }
 
-  public void addToPreviewPictures(String elem) {
-    if (this.previewPictures == null) {
-      this.previewPictures = new java.util.ArrayList<String>();
+  public void addToRegTypes(int elem) {
+    if (this.regTypes == null) {
+      this.regTypes = new java.util.ArrayList<Integer>();
     }
-    this.previewPictures.add(elem);
+    this.regTypes.add(elem);
   }
 
-  public java.util.List<String> getPreviewPictures() {
-    return this.previewPictures;
+  public java.util.List<Integer> getRegTypes() {
+    return this.regTypes;
   }
 
-  public DetectResult setPreviewPictures(java.util.List<String> previewPictures) {
-    this.previewPictures = previewPictures;
+  public DetectResult setRegTypes(java.util.List<Integer> regTypes) {
+    this.regTypes = regTypes;
     return this;
   }
 
-  public void unsetPreviewPictures() {
-    this.previewPictures = null;
+  public void unsetRegTypes() {
+    this.regTypes = null;
   }
 
-  /** Returns true if field previewPictures is set (has been assigned a value) and false otherwise */
-  public boolean isSetPreviewPictures() {
-    return this.previewPictures != null;
+  /** Returns true if field regTypes is set (has been assigned a value) and false otherwise */
+  public boolean isSetRegTypes() {
+    return this.regTypes != null;
   }
 
-  public void setPreviewPicturesIsSet(boolean value) {
+  public void setRegTypesIsSet(boolean value) {
     if (!value) {
-      this.previewPictures = null;
+      this.regTypes = null;
+    }
+  }
+
+  public int getRegScoresSize() {
+    return (this.regScores == null) ? 0 : this.regScores.size();
+  }
+
+  public java.util.Iterator<Double> getRegScoresIterator() {
+    return (this.regScores == null) ? null : this.regScores.iterator();
+  }
+
+  public void addToRegScores(double elem) {
+    if (this.regScores == null) {
+      this.regScores = new java.util.ArrayList<Double>();
+    }
+    this.regScores.add(elem);
+  }
+
+  public java.util.List<Double> getRegScores() {
+    return this.regScores;
+  }
+
+  public DetectResult setRegScores(java.util.List<Double> regScores) {
+    this.regScores = regScores;
+    return this;
+  }
+
+  public void unsetRegScores() {
+    this.regScores = null;
+  }
+
+  /** Returns true if field regScores is set (has been assigned a value) and false otherwise */
+  public boolean isSetRegScores() {
+    return this.regScores != null;
+  }
+
+  public void setRegScoresIsSet(boolean value) {
+    if (!value) {
+      this.regScores = null;
+    }
+  }
+
+  public int getRectsSize() {
+    return (this.rects == null) ? 0 : this.rects.size();
+  }
+
+  public java.util.Iterator<RegRect> getRectsIterator() {
+    return (this.rects == null) ? null : this.rects.iterator();
+  }
+
+  public void addToRects(RegRect elem) {
+    if (this.rects == null) {
+      this.rects = new java.util.ArrayList<RegRect>();
+    }
+    this.rects.add(elem);
+  }
+
+  public java.util.List<RegRect> getRects() {
+    return this.rects;
+  }
+
+  public DetectResult setRects(java.util.List<RegRect> rects) {
+    this.rects = rects;
+    return this;
+  }
+
+  public void unsetRects() {
+    this.rects = null;
+  }
+
+  /** Returns true if field rects is set (has been assigned a value) and false otherwise */
+  public boolean isSetRects() {
+    return this.rects != null;
+  }
+
+  public void setRectsIsSet(boolean value) {
+    if (!value) {
+      this.rects = null;
+    }
+  }
+
+  public String getPreviewPicURL() {
+    return this.previewPicURL;
+  }
+
+  public DetectResult setPreviewPicURL(String previewPicURL) {
+    this.previewPicURL = previewPicURL;
+    return this;
+  }
+
+  public void unsetPreviewPicURL() {
+    this.previewPicURL = null;
+  }
+
+  /** Returns true if field previewPicURL is set (has been assigned a value) and false otherwise */
+  public boolean isSetPreviewPicURL() {
+    return this.previewPicURL != null;
+  }
+
+  public void setPreviewPicURLIsSet(boolean value) {
+    if (!value) {
+      this.previewPicURL = null;
     }
   }
 
@@ -508,43 +508,11 @@ public class DetectResult implements org.apache.thrift.TBase<DetectResult, Detec
       }
       break;
 
-    case HIT_TYPE:
-      if (value == null) {
-        unsetHitType();
-      } else {
-        setHitType((Integer)value);
-      }
-      break;
-
-    case CONFIDENCE_THRESHOLD:
-      if (value == null) {
-        unsetConfidenceThreshold();
-      } else {
-        setConfidenceThreshold((Double)value);
-      }
-      break;
-
-    case RECT_X:
-      if (value == null) {
-        unsetRectX();
-      } else {
-        setRectX((Double)value);
-      }
-      break;
-
-    case RECT_Y:
-      if (value == null) {
-        unsetRectY();
-      } else {
-        setRectY((Double)value);
-      }
-      break;
-
     case HEIGHT:
       if (value == null) {
         unsetHeight();
       } else {
-        setHeight((Double)value);
+        setHeight((Integer)value);
       }
       break;
 
@@ -552,15 +520,39 @@ public class DetectResult implements org.apache.thrift.TBase<DetectResult, Detec
       if (value == null) {
         unsetWidth();
       } else {
-        setWidth((Double)value);
+        setWidth((Integer)value);
       }
       break;
 
-    case PREVIEW_PICTURES:
+    case REG_TYPES:
       if (value == null) {
-        unsetPreviewPictures();
+        unsetRegTypes();
       } else {
-        setPreviewPictures((java.util.List<String>)value);
+        setRegTypes((java.util.List<Integer>)value);
+      }
+      break;
+
+    case REG_SCORES:
+      if (value == null) {
+        unsetRegScores();
+      } else {
+        setRegScores((java.util.List<Double>)value);
+      }
+      break;
+
+    case RECTS:
+      if (value == null) {
+        unsetRects();
+      } else {
+        setRects((java.util.List<RegRect>)value);
+      }
+      break;
+
+    case PREVIEW_PIC_URL:
+      if (value == null) {
+        unsetPreviewPicURL();
+      } else {
+        setPreviewPicURL((String)value);
       }
       break;
 
@@ -583,26 +575,23 @@ public class DetectResult implements org.apache.thrift.TBase<DetectResult, Detec
     case HIT_TIME:
       return getHitTime();
 
-    case HIT_TYPE:
-      return getHitType();
-
-    case CONFIDENCE_THRESHOLD:
-      return getConfidenceThreshold();
-
-    case RECT_X:
-      return getRectX();
-
-    case RECT_Y:
-      return getRectY();
-
     case HEIGHT:
       return getHeight();
 
     case WIDTH:
       return getWidth();
 
-    case PREVIEW_PICTURES:
-      return getPreviewPictures();
+    case REG_TYPES:
+      return getRegTypes();
+
+    case REG_SCORES:
+      return getRegScores();
+
+    case RECTS:
+      return getRects();
+
+    case PREVIEW_PIC_URL:
+      return getPreviewPicURL();
 
     case VIDEO_URL:
       return getVideoURL();
@@ -622,20 +611,18 @@ public class DetectResult implements org.apache.thrift.TBase<DetectResult, Detec
       return isSetServiceId();
     case HIT_TIME:
       return isSetHitTime();
-    case HIT_TYPE:
-      return isSetHitType();
-    case CONFIDENCE_THRESHOLD:
-      return isSetConfidenceThreshold();
-    case RECT_X:
-      return isSetRectX();
-    case RECT_Y:
-      return isSetRectY();
     case HEIGHT:
       return isSetHeight();
     case WIDTH:
       return isSetWidth();
-    case PREVIEW_PICTURES:
-      return isSetPreviewPictures();
+    case REG_TYPES:
+      return isSetRegTypes();
+    case REG_SCORES:
+      return isSetRegScores();
+    case RECTS:
+      return isSetRects();
+    case PREVIEW_PIC_URL:
+      return isSetPreviewPicURL();
     case VIDEO_URL:
       return isSetVideoURL();
     }
@@ -675,42 +662,6 @@ public class DetectResult implements org.apache.thrift.TBase<DetectResult, Detec
         return false;
     }
 
-    boolean this_present_hitType = true;
-    boolean that_present_hitType = true;
-    if (this_present_hitType || that_present_hitType) {
-      if (!(this_present_hitType && that_present_hitType))
-        return false;
-      if (this.hitType != that.hitType)
-        return false;
-    }
-
-    boolean this_present_confidenceThreshold = true;
-    boolean that_present_confidenceThreshold = true;
-    if (this_present_confidenceThreshold || that_present_confidenceThreshold) {
-      if (!(this_present_confidenceThreshold && that_present_confidenceThreshold))
-        return false;
-      if (this.confidenceThreshold != that.confidenceThreshold)
-        return false;
-    }
-
-    boolean this_present_rectX = true;
-    boolean that_present_rectX = true;
-    if (this_present_rectX || that_present_rectX) {
-      if (!(this_present_rectX && that_present_rectX))
-        return false;
-      if (this.rectX != that.rectX)
-        return false;
-    }
-
-    boolean this_present_rectY = true;
-    boolean that_present_rectY = true;
-    if (this_present_rectY || that_present_rectY) {
-      if (!(this_present_rectY && that_present_rectY))
-        return false;
-      if (this.rectY != that.rectY)
-        return false;
-    }
-
     boolean this_present_height = true;
     boolean that_present_height = true;
     if (this_present_height || that_present_height) {
@@ -729,12 +680,39 @@ public class DetectResult implements org.apache.thrift.TBase<DetectResult, Detec
         return false;
     }
 
-    boolean this_present_previewPictures = true && this.isSetPreviewPictures();
-    boolean that_present_previewPictures = true && that.isSetPreviewPictures();
-    if (this_present_previewPictures || that_present_previewPictures) {
-      if (!(this_present_previewPictures && that_present_previewPictures))
+    boolean this_present_regTypes = true && this.isSetRegTypes();
+    boolean that_present_regTypes = true && that.isSetRegTypes();
+    if (this_present_regTypes || that_present_regTypes) {
+      if (!(this_present_regTypes && that_present_regTypes))
         return false;
-      if (!this.previewPictures.equals(that.previewPictures))
+      if (!this.regTypes.equals(that.regTypes))
+        return false;
+    }
+
+    boolean this_present_regScores = true && this.isSetRegScores();
+    boolean that_present_regScores = true && that.isSetRegScores();
+    if (this_present_regScores || that_present_regScores) {
+      if (!(this_present_regScores && that_present_regScores))
+        return false;
+      if (!this.regScores.equals(that.regScores))
+        return false;
+    }
+
+    boolean this_present_rects = true && this.isSetRects();
+    boolean that_present_rects = true && that.isSetRects();
+    if (this_present_rects || that_present_rects) {
+      if (!(this_present_rects && that_present_rects))
+        return false;
+      if (!this.rects.equals(that.rects))
+        return false;
+    }
+
+    boolean this_present_previewPicURL = true && this.isSetPreviewPicURL();
+    boolean that_present_previewPicURL = true && that.isSetPreviewPicURL();
+    if (this_present_previewPicURL || that_present_previewPicURL) {
+      if (!(this_present_previewPicURL && that_present_previewPicURL))
+        return false;
+      if (!this.previewPicURL.equals(that.previewPicURL))
         return false;
     }
 
@@ -762,21 +740,25 @@ public class DetectResult implements org.apache.thrift.TBase<DetectResult, Detec
     if (isSetHitTime())
       hashCode = hashCode * 8191 + hitTime.hashCode();
 
-    hashCode = hashCode * 8191 + hitType;
+    hashCode = hashCode * 8191 + height;
 
-    hashCode = hashCode * 8191 + org.apache.thrift.TBaseHelper.hashCode(confidenceThreshold);
+    hashCode = hashCode * 8191 + width;
 
-    hashCode = hashCode * 8191 + org.apache.thrift.TBaseHelper.hashCode(rectX);
+    hashCode = hashCode * 8191 + ((isSetRegTypes()) ? 131071 : 524287);
+    if (isSetRegTypes())
+      hashCode = hashCode * 8191 + regTypes.hashCode();
 
-    hashCode = hashCode * 8191 + org.apache.thrift.TBaseHelper.hashCode(rectY);
+    hashCode = hashCode * 8191 + ((isSetRegScores()) ? 131071 : 524287);
+    if (isSetRegScores())
+      hashCode = hashCode * 8191 + regScores.hashCode();
 
-    hashCode = hashCode * 8191 + org.apache.thrift.TBaseHelper.hashCode(height);
+    hashCode = hashCode * 8191 + ((isSetRects()) ? 131071 : 524287);
+    if (isSetRects())
+      hashCode = hashCode * 8191 + rects.hashCode();
 
-    hashCode = hashCode * 8191 + org.apache.thrift.TBaseHelper.hashCode(width);
-
-    hashCode = hashCode * 8191 + ((isSetPreviewPictures()) ? 131071 : 524287);
-    if (isSetPreviewPictures())
-      hashCode = hashCode * 8191 + previewPictures.hashCode();
+    hashCode = hashCode * 8191 + ((isSetPreviewPicURL()) ? 131071 : 524287);
+    if (isSetPreviewPicURL())
+      hashCode = hashCode * 8191 + previewPicURL.hashCode();
 
     hashCode = hashCode * 8191 + ((isSetVideoURL()) ? 131071 : 524287);
     if (isSetVideoURL())
@@ -813,46 +795,6 @@ public class DetectResult implements org.apache.thrift.TBase<DetectResult, Detec
         return lastComparison;
       }
     }
-    lastComparison = Boolean.valueOf(isSetHitType()).compareTo(other.isSetHitType());
-    if (lastComparison != 0) {
-      return lastComparison;
-    }
-    if (isSetHitType()) {
-      lastComparison = org.apache.thrift.TBaseHelper.compareTo(this.hitType, other.hitType);
-      if (lastComparison != 0) {
-        return lastComparison;
-      }
-    }
-    lastComparison = Boolean.valueOf(isSetConfidenceThreshold()).compareTo(other.isSetConfidenceThreshold());
-    if (lastComparison != 0) {
-      return lastComparison;
-    }
-    if (isSetConfidenceThreshold()) {
-      lastComparison = org.apache.thrift.TBaseHelper.compareTo(this.confidenceThreshold, other.confidenceThreshold);
-      if (lastComparison != 0) {
-        return lastComparison;
-      }
-    }
-    lastComparison = Boolean.valueOf(isSetRectX()).compareTo(other.isSetRectX());
-    if (lastComparison != 0) {
-      return lastComparison;
-    }
-    if (isSetRectX()) {
-      lastComparison = org.apache.thrift.TBaseHelper.compareTo(this.rectX, other.rectX);
-      if (lastComparison != 0) {
-        return lastComparison;
-      }
-    }
-    lastComparison = Boolean.valueOf(isSetRectY()).compareTo(other.isSetRectY());
-    if (lastComparison != 0) {
-      return lastComparison;
-    }
-    if (isSetRectY()) {
-      lastComparison = org.apache.thrift.TBaseHelper.compareTo(this.rectY, other.rectY);
-      if (lastComparison != 0) {
-        return lastComparison;
-      }
-    }
     lastComparison = Boolean.valueOf(isSetHeight()).compareTo(other.isSetHeight());
     if (lastComparison != 0) {
       return lastComparison;
@@ -873,12 +815,42 @@ public class DetectResult implements org.apache.thrift.TBase<DetectResult, Detec
         return lastComparison;
       }
     }
-    lastComparison = Boolean.valueOf(isSetPreviewPictures()).compareTo(other.isSetPreviewPictures());
+    lastComparison = Boolean.valueOf(isSetRegTypes()).compareTo(other.isSetRegTypes());
     if (lastComparison != 0) {
       return lastComparison;
     }
-    if (isSetPreviewPictures()) {
-      lastComparison = org.apache.thrift.TBaseHelper.compareTo(this.previewPictures, other.previewPictures);
+    if (isSetRegTypes()) {
+      lastComparison = org.apache.thrift.TBaseHelper.compareTo(this.regTypes, other.regTypes);
+      if (lastComparison != 0) {
+        return lastComparison;
+      }
+    }
+    lastComparison = Boolean.valueOf(isSetRegScores()).compareTo(other.isSetRegScores());
+    if (lastComparison != 0) {
+      return lastComparison;
+    }
+    if (isSetRegScores()) {
+      lastComparison = org.apache.thrift.TBaseHelper.compareTo(this.regScores, other.regScores);
+      if (lastComparison != 0) {
+        return lastComparison;
+      }
+    }
+    lastComparison = Boolean.valueOf(isSetRects()).compareTo(other.isSetRects());
+    if (lastComparison != 0) {
+      return lastComparison;
+    }
+    if (isSetRects()) {
+      lastComparison = org.apache.thrift.TBaseHelper.compareTo(this.rects, other.rects);
+      if (lastComparison != 0) {
+        return lastComparison;
+      }
+    }
+    lastComparison = Boolean.valueOf(isSetPreviewPicURL()).compareTo(other.isSetPreviewPicURL());
+    if (lastComparison != 0) {
+      return lastComparison;
+    }
+    if (isSetPreviewPicURL()) {
+      lastComparison = org.apache.thrift.TBaseHelper.compareTo(this.previewPicURL, other.previewPicURL);
       if (lastComparison != 0) {
         return lastComparison;
       }
@@ -929,22 +901,6 @@ public class DetectResult implements org.apache.thrift.TBase<DetectResult, Detec
     }
     first = false;
     if (!first) sb.append(", ");
-    sb.append("hitType:");
-    sb.append(this.hitType);
-    first = false;
-    if (!first) sb.append(", ");
-    sb.append("confidenceThreshold:");
-    sb.append(this.confidenceThreshold);
-    first = false;
-    if (!first) sb.append(", ");
-    sb.append("rectX:");
-    sb.append(this.rectX);
-    first = false;
-    if (!first) sb.append(", ");
-    sb.append("rectY:");
-    sb.append(this.rectY);
-    first = false;
-    if (!first) sb.append(", ");
     sb.append("height:");
     sb.append(this.height);
     first = false;
@@ -953,11 +909,35 @@ public class DetectResult implements org.apache.thrift.TBase<DetectResult, Detec
     sb.append(this.width);
     first = false;
     if (!first) sb.append(", ");
-    sb.append("previewPictures:");
-    if (this.previewPictures == null) {
+    sb.append("regTypes:");
+    if (this.regTypes == null) {
       sb.append("null");
     } else {
-      sb.append(this.previewPictures);
+      sb.append(this.regTypes);
+    }
+    first = false;
+    if (!first) sb.append(", ");
+    sb.append("regScores:");
+    if (this.regScores == null) {
+      sb.append("null");
+    } else {
+      sb.append(this.regScores);
+    }
+    first = false;
+    if (!first) sb.append(", ");
+    sb.append("rects:");
+    if (this.rects == null) {
+      sb.append("null");
+    } else {
+      sb.append(this.rects);
+    }
+    first = false;
+    if (!first) sb.append(", ");
+    sb.append("previewPicURL:");
+    if (this.previewPicURL == null) {
+      sb.append("null");
+    } else {
+      sb.append(this.previewPicURL);
     }
     first = false;
     if (!first) sb.append(", ");
@@ -980,14 +960,19 @@ public class DetectResult implements org.apache.thrift.TBase<DetectResult, Detec
     if (hitTime == null) {
       throw new org.apache.thrift.protocol.TProtocolException("Required field 'hitTime' was not present! Struct: " + toString());
     }
-    // alas, we cannot check 'hitType' because it's a primitive and you chose the non-beans generator.
-    // alas, we cannot check 'confidenceThreshold' because it's a primitive and you chose the non-beans generator.
-    // alas, we cannot check 'rectX' because it's a primitive and you chose the non-beans generator.
-    // alas, we cannot check 'rectY' because it's a primitive and you chose the non-beans generator.
     // alas, we cannot check 'height' because it's a primitive and you chose the non-beans generator.
     // alas, we cannot check 'width' because it's a primitive and you chose the non-beans generator.
-    if (previewPictures == null) {
-      throw new org.apache.thrift.protocol.TProtocolException("Required field 'previewPictures' was not present! Struct: " + toString());
+    if (regTypes == null) {
+      throw new org.apache.thrift.protocol.TProtocolException("Required field 'regTypes' was not present! Struct: " + toString());
+    }
+    if (regScores == null) {
+      throw new org.apache.thrift.protocol.TProtocolException("Required field 'regScores' was not present! Struct: " + toString());
+    }
+    if (rects == null) {
+      throw new org.apache.thrift.protocol.TProtocolException("Required field 'rects' was not present! Struct: " + toString());
+    }
+    if (previewPicURL == null) {
+      throw new org.apache.thrift.protocol.TProtocolException("Required field 'previewPicURL' was not present! Struct: " + toString());
     }
     if (videoURL == null) {
       throw new org.apache.thrift.protocol.TProtocolException("Required field 'videoURL' was not present! Struct: " + toString());
@@ -1047,73 +1032,86 @@ public class DetectResult implements org.apache.thrift.TBase<DetectResult, Detec
               org.apache.thrift.protocol.TProtocolUtil.skip(iprot, schemeField.type);
             }
             break;
-          case 3: // HIT_TYPE
+          case 3: // HEIGHT
             if (schemeField.type == org.apache.thrift.protocol.TType.I32) {
-              struct.hitType = iprot.readI32();
-              struct.setHitTypeIsSet(true);
-            } else { 
-              org.apache.thrift.protocol.TProtocolUtil.skip(iprot, schemeField.type);
-            }
-            break;
-          case 4: // CONFIDENCE_THRESHOLD
-            if (schemeField.type == org.apache.thrift.protocol.TType.DOUBLE) {
-              struct.confidenceThreshold = iprot.readDouble();
-              struct.setConfidenceThresholdIsSet(true);
-            } else { 
-              org.apache.thrift.protocol.TProtocolUtil.skip(iprot, schemeField.type);
-            }
-            break;
-          case 5: // RECT_X
-            if (schemeField.type == org.apache.thrift.protocol.TType.DOUBLE) {
-              struct.rectX = iprot.readDouble();
-              struct.setRectXIsSet(true);
-            } else { 
-              org.apache.thrift.protocol.TProtocolUtil.skip(iprot, schemeField.type);
-            }
-            break;
-          case 6: // RECT_Y
-            if (schemeField.type == org.apache.thrift.protocol.TType.DOUBLE) {
-              struct.rectY = iprot.readDouble();
-              struct.setRectYIsSet(true);
-            } else { 
-              org.apache.thrift.protocol.TProtocolUtil.skip(iprot, schemeField.type);
-            }
-            break;
-          case 7: // HEIGHT
-            if (schemeField.type == org.apache.thrift.protocol.TType.DOUBLE) {
-              struct.height = iprot.readDouble();
+              struct.height = iprot.readI32();
               struct.setHeightIsSet(true);
             } else { 
               org.apache.thrift.protocol.TProtocolUtil.skip(iprot, schemeField.type);
             }
             break;
-          case 8: // WIDTH
-            if (schemeField.type == org.apache.thrift.protocol.TType.DOUBLE) {
-              struct.width = iprot.readDouble();
+          case 4: // WIDTH
+            if (schemeField.type == org.apache.thrift.protocol.TType.I32) {
+              struct.width = iprot.readI32();
               struct.setWidthIsSet(true);
             } else { 
               org.apache.thrift.protocol.TProtocolUtil.skip(iprot, schemeField.type);
             }
             break;
-          case 9: // PREVIEW_PICTURES
+          case 5: // REG_TYPES
             if (schemeField.type == org.apache.thrift.protocol.TType.LIST) {
               {
                 org.apache.thrift.protocol.TList _list0 = iprot.readListBegin();
-                struct.previewPictures = new java.util.ArrayList<String>(_list0.size);
-                String _elem1;
+                struct.regTypes = new java.util.ArrayList<Integer>(_list0.size);
+                int _elem1;
                 for (int _i2 = 0; _i2 < _list0.size; ++_i2)
                 {
-                  _elem1 = iprot.readString();
-                  struct.previewPictures.add(_elem1);
+                  _elem1 = iprot.readI32();
+                  struct.regTypes.add(_elem1);
                 }
                 iprot.readListEnd();
               }
-              struct.setPreviewPicturesIsSet(true);
+              struct.setRegTypesIsSet(true);
             } else { 
               org.apache.thrift.protocol.TProtocolUtil.skip(iprot, schemeField.type);
             }
             break;
-          case 10: // VIDEO_URL
+          case 6: // REG_SCORES
+            if (schemeField.type == org.apache.thrift.protocol.TType.LIST) {
+              {
+                org.apache.thrift.protocol.TList _list3 = iprot.readListBegin();
+                struct.regScores = new java.util.ArrayList<Double>(_list3.size);
+                double _elem4;
+                for (int _i5 = 0; _i5 < _list3.size; ++_i5)
+                {
+                  _elem4 = iprot.readDouble();
+                  struct.regScores.add(_elem4);
+                }
+                iprot.readListEnd();
+              }
+              struct.setRegScoresIsSet(true);
+            } else { 
+              org.apache.thrift.protocol.TProtocolUtil.skip(iprot, schemeField.type);
+            }
+            break;
+          case 7: // RECTS
+            if (schemeField.type == org.apache.thrift.protocol.TType.LIST) {
+              {
+                org.apache.thrift.protocol.TList _list6 = iprot.readListBegin();
+                struct.rects = new java.util.ArrayList<RegRect>(_list6.size);
+                RegRect _elem7;
+                for (int _i8 = 0; _i8 < _list6.size; ++_i8)
+                {
+                  _elem7 = new RegRect();
+                  _elem7.read(iprot);
+                  struct.rects.add(_elem7);
+                }
+                iprot.readListEnd();
+              }
+              struct.setRectsIsSet(true);
+            } else { 
+              org.apache.thrift.protocol.TProtocolUtil.skip(iprot, schemeField.type);
+            }
+            break;
+          case 8: // PREVIEW_PIC_URL
+            if (schemeField.type == org.apache.thrift.protocol.TType.STRING) {
+              struct.previewPicURL = iprot.readString();
+              struct.setPreviewPicURLIsSet(true);
+            } else { 
+              org.apache.thrift.protocol.TProtocolUtil.skip(iprot, schemeField.type);
+            }
+            break;
+          case 9: // VIDEO_URL
             if (schemeField.type == org.apache.thrift.protocol.TType.STRING) {
               struct.videoURL = iprot.readString();
               struct.setVideoURLIsSet(true);
@@ -1129,18 +1127,6 @@ public class DetectResult implements org.apache.thrift.TBase<DetectResult, Detec
       iprot.readStructEnd();
 
       // check for required fields of primitive type, which can't be checked in the validate method
-      if (!struct.isSetHitType()) {
-        throw new org.apache.thrift.protocol.TProtocolException("Required field 'hitType' was not found in serialized data! Struct: " + toString());
-      }
-      if (!struct.isSetConfidenceThreshold()) {
-        throw new org.apache.thrift.protocol.TProtocolException("Required field 'confidenceThreshold' was not found in serialized data! Struct: " + toString());
-      }
-      if (!struct.isSetRectX()) {
-        throw new org.apache.thrift.protocol.TProtocolException("Required field 'rectX' was not found in serialized data! Struct: " + toString());
-      }
-      if (!struct.isSetRectY()) {
-        throw new org.apache.thrift.protocol.TProtocolException("Required field 'rectY' was not found in serialized data! Struct: " + toString());
-      }
       if (!struct.isSetHeight()) {
         throw new org.apache.thrift.protocol.TProtocolException("Required field 'height' was not found in serialized data! Struct: " + toString());
       }
@@ -1164,34 +1150,51 @@ public class DetectResult implements org.apache.thrift.TBase<DetectResult, Detec
         oprot.writeString(struct.hitTime);
         oprot.writeFieldEnd();
       }
-      oprot.writeFieldBegin(HIT_TYPE_FIELD_DESC);
-      oprot.writeI32(struct.hitType);
-      oprot.writeFieldEnd();
-      oprot.writeFieldBegin(CONFIDENCE_THRESHOLD_FIELD_DESC);
-      oprot.writeDouble(struct.confidenceThreshold);
-      oprot.writeFieldEnd();
-      oprot.writeFieldBegin(RECT_X_FIELD_DESC);
-      oprot.writeDouble(struct.rectX);
-      oprot.writeFieldEnd();
-      oprot.writeFieldBegin(RECT_Y_FIELD_DESC);
-      oprot.writeDouble(struct.rectY);
-      oprot.writeFieldEnd();
       oprot.writeFieldBegin(HEIGHT_FIELD_DESC);
-      oprot.writeDouble(struct.height);
+      oprot.writeI32(struct.height);
       oprot.writeFieldEnd();
       oprot.writeFieldBegin(WIDTH_FIELD_DESC);
-      oprot.writeDouble(struct.width);
+      oprot.writeI32(struct.width);
       oprot.writeFieldEnd();
-      if (struct.previewPictures != null) {
-        oprot.writeFieldBegin(PREVIEW_PICTURES_FIELD_DESC);
+      if (struct.regTypes != null) {
+        oprot.writeFieldBegin(REG_TYPES_FIELD_DESC);
         {
-          oprot.writeListBegin(new org.apache.thrift.protocol.TList(org.apache.thrift.protocol.TType.STRING, struct.previewPictures.size()));
-          for (String _iter3 : struct.previewPictures)
+          oprot.writeListBegin(new org.apache.thrift.protocol.TList(org.apache.thrift.protocol.TType.I32, struct.regTypes.size()));
+          for (int _iter9 : struct.regTypes)
           {
-            oprot.writeString(_iter3);
+            oprot.writeI32(_iter9);
           }
           oprot.writeListEnd();
         }
+        oprot.writeFieldEnd();
+      }
+      if (struct.regScores != null) {
+        oprot.writeFieldBegin(REG_SCORES_FIELD_DESC);
+        {
+          oprot.writeListBegin(new org.apache.thrift.protocol.TList(org.apache.thrift.protocol.TType.DOUBLE, struct.regScores.size()));
+          for (double _iter10 : struct.regScores)
+          {
+            oprot.writeDouble(_iter10);
+          }
+          oprot.writeListEnd();
+        }
+        oprot.writeFieldEnd();
+      }
+      if (struct.rects != null) {
+        oprot.writeFieldBegin(RECTS_FIELD_DESC);
+        {
+          oprot.writeListBegin(new org.apache.thrift.protocol.TList(org.apache.thrift.protocol.TType.STRUCT, struct.rects.size()));
+          for (RegRect _iter11 : struct.rects)
+          {
+            _iter11.write(oprot);
+          }
+          oprot.writeListEnd();
+        }
+        oprot.writeFieldEnd();
+      }
+      if (struct.previewPicURL != null) {
+        oprot.writeFieldBegin(PREVIEW_PIC_URL_FIELD_DESC);
+        oprot.writeString(struct.previewPicURL);
         oprot.writeFieldEnd();
       }
       if (struct.videoURL != null) {
@@ -1218,19 +1221,30 @@ public class DetectResult implements org.apache.thrift.TBase<DetectResult, Detec
       org.apache.thrift.protocol.TTupleProtocol oprot = (org.apache.thrift.protocol.TTupleProtocol) prot;
       oprot.writeString(struct.serviceId);
       oprot.writeString(struct.hitTime);
-      oprot.writeI32(struct.hitType);
-      oprot.writeDouble(struct.confidenceThreshold);
-      oprot.writeDouble(struct.rectX);
-      oprot.writeDouble(struct.rectY);
-      oprot.writeDouble(struct.height);
-      oprot.writeDouble(struct.width);
+      oprot.writeI32(struct.height);
+      oprot.writeI32(struct.width);
       {
-        oprot.writeI32(struct.previewPictures.size());
-        for (String _iter4 : struct.previewPictures)
+        oprot.writeI32(struct.regTypes.size());
+        for (int _iter12 : struct.regTypes)
         {
-          oprot.writeString(_iter4);
+          oprot.writeI32(_iter12);
         }
       }
+      {
+        oprot.writeI32(struct.regScores.size());
+        for (double _iter13 : struct.regScores)
+        {
+          oprot.writeDouble(_iter13);
+        }
+      }
+      {
+        oprot.writeI32(struct.rects.size());
+        for (RegRect _iter14 : struct.rects)
+        {
+          _iter14.write(oprot);
+        }
+      }
+      oprot.writeString(struct.previewPicURL);
       oprot.writeString(struct.videoURL);
     }
 
@@ -1241,29 +1255,46 @@ public class DetectResult implements org.apache.thrift.TBase<DetectResult, Detec
       struct.setServiceIdIsSet(true);
       struct.hitTime = iprot.readString();
       struct.setHitTimeIsSet(true);
-      struct.hitType = iprot.readI32();
-      struct.setHitTypeIsSet(true);
-      struct.confidenceThreshold = iprot.readDouble();
-      struct.setConfidenceThresholdIsSet(true);
-      struct.rectX = iprot.readDouble();
-      struct.setRectXIsSet(true);
-      struct.rectY = iprot.readDouble();
-      struct.setRectYIsSet(true);
-      struct.height = iprot.readDouble();
+      struct.height = iprot.readI32();
       struct.setHeightIsSet(true);
-      struct.width = iprot.readDouble();
+      struct.width = iprot.readI32();
       struct.setWidthIsSet(true);
       {
-        org.apache.thrift.protocol.TList _list5 = new org.apache.thrift.protocol.TList(org.apache.thrift.protocol.TType.STRING, iprot.readI32());
-        struct.previewPictures = new java.util.ArrayList<String>(_list5.size);
-        String _elem6;
-        for (int _i7 = 0; _i7 < _list5.size; ++_i7)
+        org.apache.thrift.protocol.TList _list15 = new org.apache.thrift.protocol.TList(org.apache.thrift.protocol.TType.I32, iprot.readI32());
+        struct.regTypes = new java.util.ArrayList<Integer>(_list15.size);
+        int _elem16;
+        for (int _i17 = 0; _i17 < _list15.size; ++_i17)
         {
-          _elem6 = iprot.readString();
-          struct.previewPictures.add(_elem6);
+          _elem16 = iprot.readI32();
+          struct.regTypes.add(_elem16);
         }
       }
-      struct.setPreviewPicturesIsSet(true);
+      struct.setRegTypesIsSet(true);
+      {
+        org.apache.thrift.protocol.TList _list18 = new org.apache.thrift.protocol.TList(org.apache.thrift.protocol.TType.DOUBLE, iprot.readI32());
+        struct.regScores = new java.util.ArrayList<Double>(_list18.size);
+        double _elem19;
+        for (int _i20 = 0; _i20 < _list18.size; ++_i20)
+        {
+          _elem19 = iprot.readDouble();
+          struct.regScores.add(_elem19);
+        }
+      }
+      struct.setRegScoresIsSet(true);
+      {
+        org.apache.thrift.protocol.TList _list21 = new org.apache.thrift.protocol.TList(org.apache.thrift.protocol.TType.STRUCT, iprot.readI32());
+        struct.rects = new java.util.ArrayList<RegRect>(_list21.size);
+        RegRect _elem22;
+        for (int _i23 = 0; _i23 < _list21.size; ++_i23)
+        {
+          _elem22 = new RegRect();
+          _elem22.read(iprot);
+          struct.rects.add(_elem22);
+        }
+      }
+      struct.setRectsIsSet(true);
+      struct.previewPicURL = iprot.readString();
+      struct.setPreviewPicURLIsSet(true);
       struct.videoURL = iprot.readString();
       struct.setVideoURLIsSet(true);
     }
