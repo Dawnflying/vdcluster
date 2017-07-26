@@ -1,14 +1,9 @@
 package com.xh.vdcluster.rpc;
 
-import com.xh.vdcluster.common.DetectServiceConfiguration;
-import com.xh.vdcluster.rpc.impl.DetectServiceImpl;
-import org.apache.thrift.TException;
 import org.apache.thrift.server.TServer;
 import org.apache.thrift.server.TSimpleServer;
 import org.apache.thrift.transport.TServerSocket;
 import org.apache.thrift.transport.TServerTransport;
-
-import java.util.List;
 
 /**
  * Created by bloom on 2017/7/26.
