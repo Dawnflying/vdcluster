@@ -1,4 +1,4 @@
-package com.xh.vdcluster.client;
+package com.xh.vdcluster.AvatarMQ;
 
 import com.rabbitmq.client.AMQP;
 import com.rabbitmq.client.Channel;
@@ -10,7 +10,7 @@ import java.io.IOException;
 /**
  * Created by bloom on 2017/7/20.
  */
-public class MessageManager {
+public class MessageAdapter {
 
     private String userName;
 
@@ -38,16 +38,16 @@ public class MessageManager {
      */
     private String routingKey;
 
-    private static MessageManager client;
+    private static MessageAdapter client;
 
-    public static MessageManager getInstance() {
+    public static MessageAdapter getInstance() {
         if (client == null)
-            client = new MessageManager();
+            client = new MessageAdapter();
 
         return client;
     }
 
-    private MessageManager() {
+    private MessageAdapter() {
         try {
             connectionFactory = new ConnectionFactory();
             connectionFactory.setUri(buildAMQPUrl());
@@ -76,5 +76,45 @@ public class MessageManager {
                         .userId("bob")
                         .build(),
                 messageBodyBytes);
+    }
+
+    public String getUserName() {
+        return userName;
+    }
+
+    public void setUserName(String userName) {
+        this.userName = userName;
+    }
+
+    public String getPassword() {
+        return password;
+    }
+
+    public void setPassword(String password) {
+        this.password = password;
+    }
+
+    public String getHostName() {
+        return hostName;
+    }
+
+    public void setHostName(String hostName) {
+        this.hostName = hostName;
+    }
+
+    public Integer getPort() {
+        return port;
+    }
+
+    public void setPort(Integer port) {
+        this.port = port;
+    }
+
+    public String getVirtualHost() {
+        return virtualHost;
+    }
+
+    public void setVirtualHost(String virtualHost) {
+        this.virtualHost = virtualHost;
     }
 }

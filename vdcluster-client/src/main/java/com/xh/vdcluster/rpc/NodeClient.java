@@ -1,11 +1,9 @@
-package com.xh.vdcluster.client;
+package com.xh.vdcluster.rpc;
 
-import com.xh.vdcluster.client.callbacks.AddServiceCallback;
 import com.xh.vdcluster.common.URL;
 import com.xh.vdcluster.registry.ChildListener;
 import com.xh.vdcluster.registry.RegistryService;
 import com.xh.vdcluster.registry.zookeeper.ZookeeperRegistryFactory;
-import com.xh.vdcluster.rpc.DetectService;
 import com.xh.vdcluster.common.DetectServiceConfiguration;
 import org.apache.curator.framework.CuratorFramework;
 import org.apache.curator.framework.recipes.cache.PathChildrenCacheEvent;
@@ -52,8 +50,6 @@ public class NodeClient {
         TAsyncClientManager tAsyncClientManager = new TAsyncClientManager();
         TNonblockingSocket tNonblockingSocket = new TNonblockingSocket("10.200.9.130", 9090);
         DetectService.AsyncClient asyncClient = new DetectService.AsyncClient(tProtocolFactory, tAsyncClientManager, tNonblockingSocket);
-        AddServiceCallback addServiceCallback = new AddServiceCallback();
-        asyncClient.addService(configuration, addServiceCallback);
 
         ZookeeperRegistryFactory factory = new ZookeeperRegistryFactory();
         Map<String, String> parameters = new HashMap<>();
