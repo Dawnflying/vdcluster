@@ -1,11 +1,10 @@
-package com.xh.vdcluster.client;
+package com.xh.vdcluster.rpc;
 
-import com.xh.vdcluster.client.callbacks.AddServiceCallback;
+import com.xh.vdcluster.messagequeue.callbacks.AddServiceCallback;
 import com.xh.vdcluster.common.URL;
 import com.xh.vdcluster.registry.ChildListener;
 import com.xh.vdcluster.registry.RegistryService;
 import com.xh.vdcluster.registry.zookeeper.ZookeeperRegistryFactory;
-import com.xh.vdcluster.rpc.DetectService;
 import com.xh.vdcluster.common.DetectServiceConfiguration;
 import org.apache.curator.framework.CuratorFramework;
 import org.apache.curator.framework.recipes.cache.PathChildrenCacheEvent;
@@ -30,7 +29,7 @@ public class NodeClient {
         /*TTransport transport = new TSocket("10.200.9.130", 9090);
         transport.open();
         TProtocol protocol = new TBinaryProtocol(transport);
-        DetectService.Client client = new DetectService.Client(protocol);
+        DetectService.Client messagequeue = new DetectService.Client(protocol);
 
         List<Integer> typeList = new ArrayList<Integer>();
         typeList.add(1);
@@ -44,7 +43,7 @@ public class NodeClient {
         configuration.setFrameWidth(1080);
         configuration.setFrameHeight(768);
  /*       while (true) {
-            int result = client.addService(configuration);
+            int result = messagequeue.addService(configuration);
             Thread.sleep(10);
         }*/
 //        transport.close();

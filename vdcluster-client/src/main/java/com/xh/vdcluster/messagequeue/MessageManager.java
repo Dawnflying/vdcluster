@@ -1,4 +1,4 @@
-package com.xh.vdcluster.client;
+package com.xh.vdcluster.messagequeue;
 
 import com.rabbitmq.client.AMQP;
 import com.rabbitmq.client.Channel;
@@ -12,6 +12,9 @@ import java.io.IOException;
  */
 public class MessageManager {
 
+    /**
+     * 用户名
+     */
     private String userName;
 
     private String password;
@@ -26,6 +29,9 @@ public class MessageManager {
 
     private Channel channel;
 
+    /**
+     * amqp URL地址
+     */
     private String amqpUrl;
 
     /**
@@ -37,6 +43,46 @@ public class MessageManager {
      * 路由键
      */
     private String routingKey;
+
+    public String getUserName() {
+        return userName;
+    }
+
+    public void setUserName(String userName) {
+        this.userName = userName;
+    }
+
+    public String getPassword() {
+        return password;
+    }
+
+    public void setPassword(String password) {
+        this.password = password;
+    }
+
+    public String getHostName() {
+        return hostName;
+    }
+
+    public void setHostName(String hostName) {
+        this.hostName = hostName;
+    }
+
+    public Integer getPort() {
+        return port;
+    }
+
+    public void setPort(Integer port) {
+        this.port = port;
+    }
+
+    public String getVirtualHost() {
+        return virtualHost;
+    }
+
+    public void setVirtualHost(String virtualHost) {
+        this.virtualHost = virtualHost;
+    }
 
     private static MessageManager client;
 

@@ -1,9 +1,10 @@
-package com.xh.vdcluster.rpc.impl;
+package com.xh.vdcluster.service.impl;
 
 import com.xh.vdcluster.common.DetectServiceConfiguration;
 import com.xh.vdcluster.rpc.*;
 import org.apache.thrift.TException;
 
+import javax.annotation.Resource;
 import java.util.List;
 
 /**

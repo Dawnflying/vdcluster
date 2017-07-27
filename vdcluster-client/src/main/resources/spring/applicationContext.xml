@@ -2,12 +2,21 @@
 <beans xmlns="http://www.springframework.org/schema/beans"
        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
        xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
-    <bean id="client" class="com.xh.vdcluster.client.NodeClient" init-method="start"/>
-    <bean id="messageClient" class="com.xh.vdcluster.client.MessageClient">
+    <bean id="client" class="com.xh.vdcluster.rpc.NodeClient" init-method="start"/>
+
+    <bean id="messageClient" class="com.xh.vdcluster.messagequeue.MessageManager">
         <property name="hostName" value="${hostname}"/>
         <property name="password" value="${password}"/>
         <property name="port" value="${port}"/>
         <property name="userName" value="${username}"/>
-        <property name="virtualHost" value="${virtualhost"/>
+        <property name="virtualHost" value="${virtualhost}"/>
     </bean>
+
+    <bean id="detectService" class="com.xh.vdcluster.service.impl.DetectServiceImpl"/>
+
+    <bean id="detectServiceAdapter" class="com.xh.vdcluster.rpc.DetectServiceAdapter" init-method="init">
+        <property name="service" ref="detectService"/>
+    </bean>
+
+
 </beans>

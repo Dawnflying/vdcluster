@@ -1,6 +1,5 @@
-package com.xh.vdcluster.client.callbacks;
+package com.xh.vdcluster.messagequeue.callbacks;
 
-import com.xh.vdcluster.rpc.DetectService;
 import org.apache.thrift.async.AsyncMethodCallback;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
