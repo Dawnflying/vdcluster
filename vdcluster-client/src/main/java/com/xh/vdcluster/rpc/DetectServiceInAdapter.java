@@ -13,8 +13,7 @@ import java.util.List;
 /**
  * Created by macbookpro on 17/7/26.
  */
-public class DetectServiceInAdapter implements ServiceAdapter,DetectService.AsyncIface
-{
+public class DetectServiceInAdapter implements ServiceAdapter, DetectService.AsyncIface {
 
     private static TProtocolFactory protocolFactory;
     private static TAsyncClientManager asyncClientManager;
@@ -34,29 +33,25 @@ public class DetectServiceInAdapter implements ServiceAdapter,DetectService.Asyn
             asyncClient = new DetectService.AsyncClient(protocolFactory, asyncClientManager, nonblockingSocket);
 
 
-
-
         } catch (Exception e) {
-
 
         }
     }
 
-
     @Override
     public void addService(DetectServiceConfiguration serviceConfig, AsyncMethodCallback<Void> resultHandler) throws TException {
 
-        asyncClient.addService(serviceConfig,resultHandler);
+        asyncClient.addService(serviceConfig, resultHandler);
     }
 
     @Override
     public void deleteService(String serviceId, AsyncMethodCallback<SeviceStatusType> resultHandler) throws TException {
-        asyncClient.deleteService(serviceId,resultHandler);
+        asyncClient.deleteService(serviceId, resultHandler);
     }
 
     @Override
     public void checkService(String serviceId, AsyncMethodCallback<SeviceStatusType> resultHandler) throws TException {
-        asyncClient.checkService(serviceId,resultHandler);
+        asyncClient.checkService(serviceId, resultHandler);
     }
 
     @Override
