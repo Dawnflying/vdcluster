@@ -1,6 +1,5 @@
 package com.xh.vdcluster.rpc;
 
-import com.xh.vdcluster.messagequeue.callbacks.AddServiceCallback;
 import org.apache.thrift.async.AsyncMethodCallback;
 import org.apache.thrift.async.TAsyncClientManager;
 import org.apache.thrift.protocol.TCompactProtocol;

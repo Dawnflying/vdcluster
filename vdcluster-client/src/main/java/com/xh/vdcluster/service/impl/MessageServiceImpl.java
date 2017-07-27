@@ -1,7 +1,6 @@
 package com.xh.vdcluster.service.impl;
 
-import com.xh.vdcluster.messagequeue.MessageManager;
-import com.xh.vdcluster.rpc.DetectResult;
+import com.xh.vdcluster.RabbitMQ.MessageAdapter;
 import com.xh.vdcluster.service.MessageService;
 
 import javax.annotation.Resource;
@@ -13,12 +12,12 @@ import java.util.concurrent.Callable;
 public class MessageServiceImpl implements MessageService {
 
     @Resource
-    private MessageManager messageManager;
+    private MessageAdapter messageAdapter;
 
     @Override
     public void pushMessage(String topic, Object msg) throws Exception {
         String message = msg.toString();
-        messageManager.publishMessage(message);
+        messageAdapter.publishMessage(topic, message);
     }
 
     @Override

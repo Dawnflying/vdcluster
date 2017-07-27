@@ -1,8 +1,6 @@
 package com.xh.vdcluster.service;
 
-import javax.security.auth.callback.Callback;
 import java.util.concurrent.Callable;
-import java.util.concurrent.Future;
 
 /**
  * Created by bloom on 2017/7/20.
