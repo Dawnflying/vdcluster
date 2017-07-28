@@ -6,6 +6,8 @@ import com.xh.vdcluster.rpc.*;
 import com.xh.vdcluster.service.MessageService;
 import org.apache.thrift.TException;
 import org.csource.fastdfs.ClientGlobal;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.core.io.ClassPathResource;
 
 import javax.annotation.Resource;
@@ -15,6 +17,8 @@ import java.util.List;
  * Created by bloom on 2017/7/26.
  */
 public class DetectServiceImpl implements DetectService.Iface {
+    private static final Logger log = LoggerFactory.getLogger(DetectServiceImpl.class);
+
 
     @Resource
     MessageService messageService;
@@ -56,6 +60,8 @@ public class DetectServiceImpl implements DetectService.Iface {
     @Override
     public void reportServiceStatus(DetectStatus detectStatus) throws TException {
 
+        log.info(detectStatus.toString());
+        System.out.println(detectStatus.toString());
 
     }
 
@@ -74,10 +80,12 @@ public class DetectServiceImpl implements DetectService.Iface {
 
             detectResult.setPreviewPicURL(newUrl);
 
-            messageService.pushMessage(detectResult);
+            messageService.pushMessage("",detectResult.toString());
 
         } catch (Exception e) {
+
             throw new RuntimeException(e);
+
         }
     }
 }

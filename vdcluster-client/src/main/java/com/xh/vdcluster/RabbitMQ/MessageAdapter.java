@@ -1,4 +1,4 @@
-package com.xh.vdcluster.AvatarMQ;
+package com.xh.vdcluster.RabbitMQ;
 
 import com.rabbitmq.client.AMQP;
 import com.rabbitmq.client.Channel;
@@ -33,11 +33,6 @@ public class MessageAdapter {
      */
     private String exchangeName;
 
-    /**
-     * 路由键
-     */
-    private String routingKey;
-
     private static MessageAdapter client;
 
     public static MessageAdapter getInstance() {
@@ -66,9 +61,9 @@ public class MessageAdapter {
     }
 
 
-    public void publishMessage(String message) throws IOException {
+    public void publishMessage(String topic ,String message) throws IOException {
         byte[] messageBodyBytes = message.getBytes();
-        channel.basicPublish(exchangeName, routingKey,
+        channel.basicPublish(exchangeName, topic,
                 new AMQP.BasicProperties.Builder()
                         .contentType("text/plain")
                         .deliveryMode(2)

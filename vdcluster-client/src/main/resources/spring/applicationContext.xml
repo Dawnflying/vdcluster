@@ -3,28 +3,36 @@
        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
        xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
 
+
+    <bean id="propertyConfigurer"
+          class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer">
+        <property name="location">
+            <value>classpath:config/config.properties</value>
+        </property>
+    </bean>
+
     <bean id="client" class="com.xh.vdcluster.rpc.NodeClient" init-method="start"/>
 
-    <bean id="messageAdapter" class="com.xh.vdcluster.AvatarMQ.MessageAdapter">
+    <bean id="messageAdapter" class="com.xh.vdcluster.RabbitMQ.MessageAdapter">
         <property name="hostName" value="${hostname}"/>
         <property name="password" value="${password}"/>
-        <property name="port" value="${port}"/>
+        <property name="port"  value="${port}"/>
         <property name="userName" value="${username}"/>
         <property name="virtualHost" value="${virtualhost}"/>
     </bean>
 
-    <bean id="messageService" class="com.xh.vdcluster.service.impl.DetectResultMessageService"/>
+    <bean id="messageService" class="com.xh.vdcluster.service.impl.MessageServiceImpl"/>
 
     <bean id="detectService" class="com.xh.vdcluster.service.impl.DetectServiceImpl"/>
 
     <bean id="detectServiceOutAdapter" class="com.xh.vdcluster.rpc.DetectServiceOutAdapter">
-        <constructor-arg name="serverPort" value="${serverPort}"/>
+        <constructor-arg name="serverPort" value="${thrift.localPort}"/>
         <constructor-arg name="service" ref="detectService"/>
     </bean>
 
 
-    <bean id="detectServiceInAdapter" class="com.xh.vdcluster.rpc.DetectServiceInAdapter">
-        <constructor-arg name="clientHost" value="${clientHost}"/>
-        <constructor-arg name="clientPort" value="${clientPort}"/>
+    <bean id="detectServiceInAdapter" class="com.xh.vdcluster.rpc.DetectServiceInAsyncAdapter">
+        <constructor-arg name="clientHost" value="${thrift.remoteHost}"/>
+        <constructor-arg name="clientPort" value="${thrift.remotePort}"/>
     </bean>
 </beans>

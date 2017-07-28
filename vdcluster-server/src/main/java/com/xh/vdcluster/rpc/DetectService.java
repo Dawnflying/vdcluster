@@ -18,7 +18,7 @@ public class DetectService {
   public interface Iface {
 
     /**
-     * client calls ping method to make sure service process is active or dead
+     * messagequeue calls ping method to make sure service process is active or dead
      * 
      * @param serviceConfig
      */
