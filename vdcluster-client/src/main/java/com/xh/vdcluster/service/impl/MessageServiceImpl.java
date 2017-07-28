@@ -1,6 +1,6 @@
 package com.xh.vdcluster.service.impl;
 
-import com.xh.vdcluster.RabbitMQ.MessageAdapter;
+import com.xh.vdcluster.rabbitmq.MessageAdapter;
 import com.xh.vdcluster.service.MessageService;
 
 import javax.annotation.Resource;

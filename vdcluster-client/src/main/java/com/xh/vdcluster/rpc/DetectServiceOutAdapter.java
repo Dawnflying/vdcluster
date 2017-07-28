@@ -8,31 +8,38 @@ import org.apache.thrift.server.TThreadPoolServer;
 import org.apache.thrift.transport.TServerSocket;
 import org.apache.thrift.transport.TServerTransport;
 
+import java.util.concurrent.ExecutorService;
+import java.util.concurrent.Executors;
+
 /**
  * Created by bloom on 2017/7/26.
  */
 public class DetectServiceOutAdapter implements ServiceAdapter {
 
+    private static ExecutorService pool = Executors.newCachedThreadPool();
 
     public DetectServiceOutAdapter(int serverPort, DetectService.Iface service) {
+        pool.submit(()->{
+                try {
 
-        try {
+                    TProcessor processor = new LogProcessor(new DetectService.Processor(service));
 
-            TProcessor processor = new LogProcessor(new DetectService.Processor(service));
+                    TServerTransport serverTransport = new TServerSocket(serverPort);
 
+                    // Use this for a multithreaded server
+                    TServer server = new TSimpleServer(new TThreadPoolServer.Args(serverTransport).processor(processor));
 
-            TServerTransport serverTransport = new TServerSocket(serverPort);
+                    server.serve();
 
-            // Use this for a multithreaded server
-            TServer server = new TSimpleServer(new TThreadPoolServer.Args(serverTransport).processor(processor));
+                } catch (Exception e) {
 
-            server.serve();
+                    e.printStackTrace();
 
-        } catch (Exception e) {
+                }
 
-            e.printStackTrace();
+        });
 
-        }
     }
+
 
 }

@@ -82,6 +82,8 @@ public class DetectServiceImpl implements DetectService.Iface {
 
             messageService.pushMessage("",detectResult.toString());
 
+            System.out.println(detectResult.toString());
+
         } catch (Exception e) {
 
             throw new RuntimeException(e);
