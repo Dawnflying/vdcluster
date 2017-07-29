@@ -3,15 +3,12 @@ package com.xh.vdcluster;
 import com.xh.vdcluster.common.DetectServiceConfiguration;
 import com.xh.vdcluster.common.DetectType;
 import com.xh.vdcluster.rabbitmq.MessageAdapter;
-import com.xh.vdcluster.rpc.DetectService;
-import com.xh.vdcluster.rpc.DetectServiceInAdapter;
-import com.xh.vdcluster.rpc.DetectServiceInAsyncAdapter;
-import com.xh.vdcluster.rpc.DetectServiceOutAdapter;
+import com.xh.vdcluster.rpc.DetectServiceAdapter;
+import com.xh.vdcluster.rpc.ReportService;
+import com.xh.vdcluster.rpc.ReportServiceAdapter;
 import com.xh.vdcluster.service.MessageService;
-import com.xh.vdcluster.service.impl.DetectServiceImpl;
 import com.xh.vdcluster.service.impl.MessageServiceImpl;
-import org.apache.thrift.async.AsyncMethodCallback;
-import org.junit.Test;
+import com.xh.vdcluster.service.impl.ReportServiceImpl;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -33,15 +30,15 @@ public class VdclusterClientTest {
             messageAdapter.setPassword("vdcluster");
             messageAdapter.setVirtualHost("/");
 
+            //report服务开启
             MessageService messageService = new MessageServiceImpl();
-
-            DetectService.Iface detectService = new DetectServiceImpl();
-
-            DetectServiceOutAdapter detectServiceOutAdapter = new DetectServiceOutAdapter(9091, detectService);
+            ReportService.Iface reportService = new ReportServiceImpl();
+            new ReportServiceAdapter(9091, reportService);
 
 //        DetectServiceInAsyncAdapter detectServiceInAsyncAdapter = new DetectServiceInAsyncAdapter("10.200.9.130",9090);
 
-            DetectServiceInAdapter detectServiceInAdapter = new DetectServiceInAdapter("10.200.9.130", 9090);
+            //申请远程服务
+            DetectServiceAdapter detectServiceInAdapter = new DetectServiceAdapter("10.200.9.130", 9090);
             List<DetectType> detectTypes = new ArrayList<>();
             detectTypes.add(new DetectType("smoke", 0.9));
             DetectServiceConfiguration configuration = new DetectServiceConfiguration();

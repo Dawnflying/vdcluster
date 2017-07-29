@@ -18,7 +18,11 @@ public enum SeviceStatusType implements TEnum {
   SERVICE_STREAM_FAULT(3),
   SERVICE_FILE_FAULT(4),
   SERVICE_STREAM_DECODE_FAULT(5),
-  SERVICE_DELETE_SUCCESS(6);
+  SERVICE_DELETE_SUCCESS(6),
+  SERVICE_START_SUCCESS(7),
+  SERVICE_START_FALIED(8),
+  SERVICE_DELETE_SUCESS(9),
+  SERVICE_DELETE_FALIED(10);
 
   private final int value;
 
@@ -53,6 +57,14 @@ public enum SeviceStatusType implements TEnum {
         return SERVICE_STREAM_DECODE_FAULT;
       case 6:
         return SERVICE_DELETE_SUCCESS;
+      case 7:
+        return SERVICE_START_SUCCESS;
+      case 8:
+        return SERVICE_START_FALIED;
+      case 9:
+        return SERVICE_DELETE_SUCESS;
+      case 10:
+        return SERVICE_DELETE_FALIED;
       default:
         return null;
     }

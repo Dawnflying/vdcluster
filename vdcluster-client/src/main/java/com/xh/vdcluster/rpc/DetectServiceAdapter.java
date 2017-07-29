@@ -1,60 +1,82 @@
 package com.xh.vdcluster.rpc;
 
-import org.apache.thrift.async.AsyncMethodCallback;
-import org.apache.thrift.async.TAsyncClientManager;
-import org.apache.thrift.protocol.TCompactProtocol;
-import org.apache.thrift.protocol.TProtocolFactory;
-import org.apache.thrift.server.TServer;
-import org.apache.thrift.server.TThreadPoolServer;
-import org.apache.thrift.transport.TNonblockingSocket;
-import org.apache.thrift.transport.TServerSocket;
-import org.apache.thrift.transport.TServerTransport;
+import com.xh.vdcluster.common.DetectServiceConfiguration;
+import org.apache.thrift.TException;
+import org.apache.thrift.protocol.TBinaryProtocol;
+import org.apache.thrift.protocol.TProtocol;
+import org.apache.thrift.transport.TSocket;
+import org.apache.thrift.transport.TTransport;
 
+import java.util.List;
+import java.util.concurrent.ExecutorService;
+import java.util.concurrent.Executors;
 
 /**
- * Created by bloom on 2017/7/26.
+ * Created by bloom on 2017/7/28.
  */
-public class DetectServiceAdapter implements ServiceAdapter {
+public class DetectServiceAdapter extends ServiceAdapter implements DetectService.Iface {
 
-    private static DetectService.Processor processor;
-    private static TProtocolFactory protocolFactory ;
-    private static TAsyncClientManager asyncClientManager;
-    private static TNonblockingSocket nonblockingSocket;
-    private static DetectService.AsyncClient asyncClient;
+    public DetectServiceAdapter(String host, int port) throws TException {
+        super(host,port);
+    }
 
-    static {
+    @Override
+    public void ping() {
         try {
-            protocolFactory = new TCompactProtocol.Factory();
-            asyncClientManager = new TAsyncClientManager();
-
-        } catch (Exception e) {
+            client.ping();
+        } catch (TException t) {
 
         }
     }
 
-    public void init(String host, int port, DetectService.Iface service, AsyncMethodCallback<Void> callback) {
-
+    @Override
+    public void addService(DetectServiceConfiguration serviceConfig){
         try {
-
-            nonblockingSocket = new TNonblockingSocket(host, port);
-            asyncClient = new DetectService.AsyncClient(protocolFactory, asyncClientManager, nonblockingSocket);
-            asyncClient.addService(null, callback);
-
-            processor = new DetectService.Processor(service);
-            TServerTransport serverTransport = new TServerSocket(9090);
-//            TServer server = new TSimpleServer(new TServer.Args(serverTransport).processor(processor));
-
-            // Use this for a multithreaded server
-            TServer server = new TThreadPoolServer(new TThreadPoolServer.Args(serverTransport).processor(processor));
-
-            System.out.println("Starting the simple server...");
-            server.serve();
-
-        } catch (Exception e) {
-
-            e.printStackTrace();
+            client.addService(serviceConfig);
+        } catch (TException t) {
 
         }
     }
+
+    @Override
+    public SeviceStatusType deleteService(String serviceId) {
+        try {
+            return client.deleteService(serviceId);
+        } catch (TException t) {
+
+            return null;
+        }
+    }
+
+    @Override
+    public SeviceStatusType checkService(String serviceId) {
+        try {
+            return client.checkService(serviceId);
+        } catch (TException t) {
+            return null;
+
+        }
+    }
+
+    @Override
+    public int getMaxServiceNum() {
+        try {
+            return client.getMaxServiceNum();
+        } catch (TException t) {
+
+            return 0;
+        }
+    }
+
+    @Override
+    public List<String> getServices() {
+        try {
+            return client.getServices();
+        } catch (TException t) {
+
+            return null;
+        }
+    }
+
 
 }

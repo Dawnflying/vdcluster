@@ -2,6 +2,7 @@ package com.xh.vdcluster.service.impl;
 
 import com.xh.vdcluster.rabbitmq.MessageAdapter;
 import com.xh.vdcluster.service.MessageService;
+import org.springframework.stereotype.Component;
 
 import javax.annotation.Resource;
 import java.util.concurrent.Callable;
@@ -9,6 +10,7 @@ import java.util.concurrent.Callable;
 /**
  * Created by bloom on 2017/7/20.
  */
+@Component
 public class MessageServiceImpl implements MessageService {
 
     @Resource

@@ -14,15 +14,15 @@ import java.util.concurrent.Executors;
 /**
  * Created by bloom on 2017/7/26.
  */
-public class DetectServiceOutAdapter implements ServiceAdapter {
+public class ReportServiceAdapter extends ServiceAdapter {
 
     private static ExecutorService pool = Executors.newCachedThreadPool();
 
-    public DetectServiceOutAdapter(int serverPort, DetectService.Iface service) {
+    public ReportServiceAdapter(int serverPort, ReportService.Iface service) {
         pool.submit(()->{
                 try {
 
-                    TProcessor processor = new LogProcessor(new DetectService.Processor(service));
+                    TProcessor processor = new LogProcessor(new ReportService.Processor(service));
 
                     TServerTransport serverTransport = new TServerSocket(serverPort);
 

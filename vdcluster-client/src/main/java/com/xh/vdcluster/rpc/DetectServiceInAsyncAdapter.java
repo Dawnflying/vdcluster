@@ -15,7 +15,7 @@ import java.util.List;
 /**
  * Created by macbookpro on 17/7/26.
  */
-public class DetectServiceInAsyncAdapter implements ServiceAdapter, DetectService.AsyncIface {
+public class DetectServiceInAsyncAdapter extends ServiceAdapter implements DetectService.AsyncIface {
 
     private static TProtocolFactory protocolFactory;
 
@@ -41,10 +41,13 @@ public class DetectServiceInAsyncAdapter implements ServiceAdapter, DetectServic
         }
     }
 
+    @Override
+    public void ping(AsyncMethodCallback<Void> resultHandler) throws TException {
+
+    }
 
     @Override
     public void addService(DetectServiceConfiguration serviceConfig, AsyncMethodCallback<Void> resultHandler) throws TException {
-
         asyncClient.addService(serviceConfig, resultHandler);
     }
 
@@ -72,13 +75,4 @@ public class DetectServiceInAsyncAdapter implements ServiceAdapter, DetectServic
 
     }
 
-    @Override
-    public void reportServiceStatus(DetectStatus detectStatus, AsyncMethodCallback<Void> resultHandler) throws TException {
-
-    }
-
-    @Override
-    public void sendSeriveDetectResult(DetectResult detectResult, AsyncMethodCallback<Void> resultHandler) throws TException {
-
-    }
 }

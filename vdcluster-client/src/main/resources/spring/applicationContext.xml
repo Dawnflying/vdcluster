@@ -23,16 +23,16 @@
 
     <bean id="messageService" class="com.xh.vdcluster.service.impl.MessageServiceImpl"/>
 
-    <bean id="detectService" class="com.xh.vdcluster.service.impl.DetectServiceImpl"/>
+    <bean id="reportService" class="com.xh.vdcluster.service.impl.ReportServiceImpl"/>
 
-    <bean id="detectServiceOutAdapter" class="com.xh.vdcluster.rpc.DetectServiceOutAdapter">
+    <bean id="detectServiceOutAdapter" class="com.xh.vdcluster.rpc.ReportServiceAdapter">
         <constructor-arg name="serverPort" value="${thrift.localPort}"/>
-        <constructor-arg name="service" ref="detectService"/>
+        <constructor-arg name="service" ref="reportService"/>
     </bean>
 
 
-    <bean id="detectServiceInAdapter" class="com.xh.vdcluster.rpc.DetectServiceInAsyncAdapter">
-        <constructor-arg name="clientHost" value="${thrift.remoteHost}"/>
-        <constructor-arg name="clientPort" value="${thrift.remotePort}"/>
+    <bean id="detectServiceAdapter" class="com.xh.vdcluster.rpc.DetectServiceAdapter">
+        <constructor-arg name="host" value="${thrift.remoteHost}"/>
+        <constructor-arg name="port" value="${thrift.remotePort}"/>
     </bean>
 </beans>
