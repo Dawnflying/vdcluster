@@ -14,30 +14,29 @@ import java.util.concurrent.Executors;
 /**
  * Created by bloom on 2017/7/26.
  */
-public class ReportServiceAdapter extends ServiceAdapter {
+public class ReportServiceAdapter  {
 
     private static ExecutorService pool = Executors.newCachedThreadPool();
 
     public ReportServiceAdapter(int serverPort, ReportService.Iface service) {
-        pool.submit(()->{
-                try {
 
-                    TProcessor processor = new LogProcessor(new ReportService.Processor(service));
+        pool.submit(() -> {
+            try {
 
-                    TServerTransport serverTransport = new TServerSocket(serverPort);
+                TProcessor processor = new LogProcessor(new ReportService.Processor(service));
 
-                    // Use this for a multithreaded server
-                    TServer server = new TSimpleServer(new TThreadPoolServer.Args(serverTransport).processor(processor));
+                TServerTransport serverTransport = new TServerSocket(serverPort);
 
-                    server.serve();
+                // Use this for a multithreaded server
+                TServer server = new TSimpleServer(new TThreadPoolServer.Args(serverTransport).processor(processor));
 
-                } catch (Exception e) {
+                server.serve();
 
-                    e.printStackTrace();
-
-                }
-
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
         });
+
 
     }
 

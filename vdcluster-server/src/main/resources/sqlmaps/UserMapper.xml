@@ -1,160 +1,112 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.xh.vdcluster.repository.mapper.UserMapper">
-  <resultMap id="BaseResultMap" type="com.xh.vdcluster.repository.model.User">
-    <id column="id" jdbcType="INTEGER" property="id" />
-    <result column="username" jdbcType="VARCHAR" property="username" />
-    <result column="password" jdbcType="VARCHAR" property="password" />
-    <result column="createTme" jdbcType="DATE" property="createtme" />
-    <result column="modifiedTime" jdbcType="DATE" property="modifiedtime" />
-  </resultMap>
-  <sql id="Base_Column_List">
-    id, username, password, createTme, modifiedTime
+    <resultMap id="BaseResultMap" type="com.xh.vdcluster.repository.model.User">
+        <id column="id" jdbcType="INTEGER" property="id"/>
+        <result column="userId" jdbcType="VARCHAR" property="userId"/>
+        <result column="username" jdbcType="VARCHAR" property="username"/>
+        <result column="password" jdbcType="VARCHAR" property="password"/>
+        <result column="createTme" jdbcType="DATE" property="createtme"/>
+        <result column="modifiedTime" jdbcType="DATE" property="modifiedtime"/>
+    </resultMap>
+    <sql id="Base_Column_List">
+    id, userId, username, password, createTme, modifiedTime
   </sql>
-  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
-    select 
-    <include refid="Base_Column_List" />
-    from user
-    where id = #{id,jdbcType=INTEGER}
-  </select>
-  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+        select
+        <include refid="Base_Column_List"/>
+        from user
+        where id = #{id,jdbcType=INTEGER}
+    </select>
+    <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
     delete from user
     where id = #{id,jdbcType=INTEGER}
   </delete>
-  <insert id="insert" parameterType="com.xh.vdcluster.repository.model.User">
-    insert into user (id, username, password, 
+    <insert id="insert" parameterType="com.xh.vdcluster.repository.model.User">
+    insert into user (id, userId, username, password,
       createTme, modifiedTime)
-    values (#{id,jdbcType=INTEGER}, #{username,jdbcType=VARCHAR}, #{password,jdbcType=VARCHAR}, 
+    values (#{id,jdbcType=INTEGER}, #{userId,jdbcType=VARCHAR}, #{username,jdbcType=VARCHAR}, #{password,jdbcType=VARCHAR},
       #{createtme,jdbcType=DATE}, #{modifiedtime,jdbcType=DATE})
   </insert>
-  <insert id="insertSelective" parameterType="com.xh.vdcluster.repository.model.User">
-    insert into user
-    <trim prefix="(" suffix=")" suffixOverrides=",">
-      <if test="id != null">
-        id,
-      </if>
-      <if test="username != null">
-        username,
-      </if>
-      <if test="password != null">
-        password,
-      </if>
-      <if test="createtme != null">
-        createTme,
-      </if>
-      <if test="modifiedtime != null">
-        modifiedTime,
-      </if>
-    </trim>
-    <trim prefix="values (" suffix=")" suffixOverrides=",">
-      <if test="id != null">
-        #{id,jdbcType=INTEGER},
-      </if>
-      <if test="username != null">
-        #{username,jdbcType=VARCHAR},
-      </if>
-      <if test="password != null">
-        #{password,jdbcType=VARCHAR},
-      </if>
-      <if test="createtme != null">
-        #{createtme,jdbcType=DATE},
-      </if>
-      <if test="modifiedtime != null">
-        #{modifiedtime,jdbcType=DATE},
-      </if>
-    </trim>
-  </insert>
-  <update id="updateByPrimaryKeySelective" parameterType="com.xh.vdcluster.repository.model.User">
+    <insert id="insertSelective" parameterType="com.xh.vdcluster.repository.model.User">
+        insert into user
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="id != null">
+                id,
+            </if>
+            <if test="userId != null">
+                userId,
+            </if>
+            <if test="username != null">
+                username,
+            </if>
+            <if test="password != null">
+                password,
+            </if>
+            <if test="createtme != null">
+                createTme,
+            </if>
+            <if test="modifiedtime != null">
+                modifiedTime,
+            </if>
+        </trim>
+        <trim prefix="values (" suffix=")" suffixOverrides=",">
+            <if test="id != null">
+                #{id,jdbcType=INTEGER},
+            </if>
+            <if test="userId != null">
+                #{userId,jdbcType=VARCHAR},
+            </if>
+            <if test="username != null">
+                #{username,jdbcType=VARCHAR},
+            </if>
+            <if test="password != null">
+                #{password,jdbcType=VARCHAR},
+            </if>
+            <if test="createtme != null">
+                #{createtme,jdbcType=DATE},
+            </if>
+            <if test="modifiedtime != null">
+                #{modifiedtime,jdbcType=DATE},
+            </if>
+        </trim>
+    </insert>
+    <update id="updateByPrimaryKeySelective" parameterType="com.xh.vdcluster.repository.model.User">
+        update user
+        <set>
+            <if test="userId != null">
+                userId = #{userId,jdbcType=VARCHAR},
+            </if>
+            <if test="username != null">
+                username = #{username,jdbcType=VARCHAR},
+            </if>
+            <if test="password != null">
+                password = #{password,jdbcType=VARCHAR},
+            </if>
+            <if test="createtme != null">
+                createTme = #{createtme,jdbcType=DATE},
+            </if>
+            <if test="modifiedtime != null">
+                modifiedTime = #{modifiedtime,jdbcType=DATE},
+            </if>
+        </set>
+        where id = #{id,jdbcType=INTEGER}
+    </update>
+    <update id="updateByPrimaryKey" parameterType="com.xh.vdcluster.repository.model.User">
     update user
-    <set>
-      <if test="username != null">
-        username = #{username,jdbcType=VARCHAR},
-      </if>
-      <if test="password != null">
-        password = #{password,jdbcType=VARCHAR},
-      </if>
-      <if test="createtme != null">
-        createTme = #{createtme,jdbcType=DATE},
-      </if>
-      <if test="modifiedtime != null">
-        modifiedTime = #{modifiedtime,jdbcType=DATE},
-      </if>
-    </set>
-    where id = #{id,jdbcType=INTEGER}
-  </update>
-  <update id="updateByPrimaryKey" parameterType="com.xh.vdcluster.repository.model.User">
-    update user
-    set username = #{username,jdbcType=VARCHAR},
+    set
+    userId = #{userId,jdbcType=VARCHAR},
+    username = #{username,jdbcType=VARCHAR},
       password = #{password,jdbcType=VARCHAR},
       createTme = #{createtme,jdbcType=DATE},
       modifiedTime = #{modifiedtime,jdbcType=DATE}
     where id = #{id,jdbcType=INTEGER}
   </update>
-  <resultMap id="BaseResultMap" type="com.xh.vdcluster.repository.model.User">
-    <id column="id" jdbcType="INTEGER" property="id" />
-    <result column="servant_id" jdbcType="VARCHAR" property="servantId" />
-    <result column="stream_Id" jdbcType="VARCHAR" property="streamId" />
-  </resultMap>
-  <sql id="Base_Column_List">
-    id, servant_id, stream_Id
-  </sql>
-  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
-    select 
-    <include refid="Base_Column_List" />
-    from servant
-    where id = #{id,jdbcType=INTEGER}
-  </select>
-  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
-    delete from servant
-    where id = #{id,jdbcType=INTEGER}
-  </delete>
-  <insert id="insert" parameterType="com.xh.vdcluster.repository.model.User">
-    insert into servant (id, servant_id, stream_Id
-      )
-    values (#{id,jdbcType=INTEGER}, #{servantId,jdbcType=VARCHAR}, #{streamId,jdbcType=VARCHAR}
-      )
-  </insert>
-  <insert id="insertSelective" parameterType="com.xh.vdcluster.repository.model.User">
-    insert into servant
-    <trim prefix="(" suffix=")" suffixOverrides=",">
-      <if test="id != null">
-        id,
-      </if>
-      <if test="servantId != null">
-        servant_id,
-      </if>
-      <if test="streamId != null">
-        stream_Id,
-      </if>
-    </trim>
-    <trim prefix="values (" suffix=")" suffixOverrides=",">
-      <if test="id != null">
-        #{id,jdbcType=INTEGER},
-      </if>
-      <if test="servantId != null">
-        #{servantId,jdbcType=VARCHAR},
-      </if>
-      <if test="streamId != null">
-        #{streamId,jdbcType=VARCHAR},
-      </if>
-    </trim>
-  </insert>
-  <update id="updateByPrimaryKeySelective" parameterType="com.xh.vdcluster.repository.model.User">
-    update servant
-    <set>
-      <if test="servantId != null">
-        servant_id = #{servantId,jdbcType=VARCHAR},
-      </if>
-      <if test="streamId != null">
-        stream_Id = #{streamId,jdbcType=VARCHAR},
-      </if>
-    </set>
-    where id = #{id,jdbcType=INTEGER}
-  </update>
-  <update id="updateByPrimaryKey" parameterType="com.xh.vdcluster.repository.model.User">
-    update servant
-    set servant_id = #{servantId,jdbcType=VARCHAR},
-      stream_Id = #{streamId,jdbcType=VARCHAR}
-    where id = #{id,jdbcType=INTEGER}
-  </update>
+
+    <select id="getUserByUsername" parameterType="java.lang.String" resultMap="BaseResultMap">
+        select
+        <include refid="Base_Column_List"/>
+        from user
+        where username = #{username,jdbcType=VARCHAR}
+    </select>
 </mapper>

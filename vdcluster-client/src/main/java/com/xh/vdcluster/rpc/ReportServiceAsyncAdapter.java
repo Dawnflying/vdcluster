@@ -1,5 +1,6 @@
 package com.xh.vdcluster.rpc;
 
+import org.apache.thrift.TException;
 import org.apache.thrift.async.AsyncMethodCallback;
 import org.apache.thrift.async.TAsyncClientManager;
 import org.apache.thrift.protocol.TCompactProtocol;
@@ -14,7 +15,7 @@ import org.apache.thrift.transport.TServerTransport;
 /**
  * Created by bloom on 2017/7/26.
  */
-public class ReportServiceAsyncAdapter extends ServiceAdapter {
+public class ReportServiceAsyncAdapter{
 
     private static DetectService.Processor processor;
     private static TProtocolFactory protocolFactory ;
@@ -31,6 +32,7 @@ public class ReportServiceAsyncAdapter extends ServiceAdapter {
 
         }
     }
+
 
     public void init(String host, int port, DetectService.Iface service, AsyncMethodCallback<Void> callback) {
 

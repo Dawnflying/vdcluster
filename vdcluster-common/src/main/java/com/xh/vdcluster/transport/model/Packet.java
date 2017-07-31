@@ -1,12 +1,9 @@
 package com.xh.vdcluster.transport.model;
 
 /**
- * Created by bloom on 2017/7/25.
+ * Created by bloom on 2017/7/31.
  */
-public interface Packet<T> {
+public interface Packet {
 
-    T pack(byte[] data);
-
-    byte[] unpack(T obj);
-
+    byte[] pack();
 }

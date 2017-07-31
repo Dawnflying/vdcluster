@@ -25,31 +25,30 @@ public class VdServiceImpl implements VdService {
     @Resource
     UserMapper userMapper;
 
-
     @Override
     public VdResult addServant(String userId, String token, List<DetectServiceConfiguration> configurationList) {
 
         if (!TokenManager.checkTokenExpiration(token))
-            return new VdResult("ok", VdResultErrorCode.TOKEN_EXPIRED, null, userId);
+            return new VdResult("token expired", VdResultErrorCode.TOKEN_EXPIRED, null, userId);
         else {
             User user = userMapper.getUserByUserId(userId);
 
             if (user == null)
-                return new VdResult("ok", VdResultErrorCode.AUTH_FAILED, null, userId);
+                return new VdResult("auth failed", VdResultErrorCode.AUTH_FAILED, null, userId);
 
             String tokenStored = userMapper.getTokenByUserId(userId);
             if (tokenStored == null || tokenStored != token)
-                return new VdResult("ok", VdResultErrorCode.TOKEN_ERROR, null, userId);
+                return new VdResult("token error", VdResultErrorCode.TOKEN_ERROR, null, userId);
 
             Integer grain = userMapper.getGrainByUserId(userId);
 
             if (configurationList.size() > grain)
-                return new VdResult("ok", VdResultErrorCode.SERVANT_OVERLOAD, null, userId);
+                return new VdResult("servant overload", VdResultErrorCode.SERVANT_OVERLOAD, null, userId);
 
 
             List<VdServant> servants = VdServantManager.getInstance().createServants(userId, configurationList);
 
-            return new VdResult("ok", VdResultErrorCode.SERVANT_SUCCESS, servants, userId);
+            return new VdResult("success to add servant", VdResultErrorCode.SERVANT_SUCCESS, servants, userId);
         }
     }
 

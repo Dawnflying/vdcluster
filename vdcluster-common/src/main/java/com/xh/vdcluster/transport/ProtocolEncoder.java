@@ -12,5 +12,8 @@ public class ProtocolEncoder extends MessageToByteEncoder<Frame> {
     @Override
     protected void encode(ChannelHandlerContext channelHandlerContext, Frame frame, ByteBuf byteBuf) throws Exception {
 
+        byte[] datas = frame.pack();
+
+        byteBuf.writeBytes(datas);
     }
 }

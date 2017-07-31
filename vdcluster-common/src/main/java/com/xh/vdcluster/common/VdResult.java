@@ -1,25 +1,37 @@
 package com.xh.vdcluster.common;
 
+import javax.xml.bind.annotation.XmlAccessType;
+import javax.xml.bind.annotation.XmlAccessorType;
+import javax.xml.bind.annotation.XmlElement;
+import javax.xml.bind.annotation.XmlRootElement;
 import java.io.Serializable;
 
 /**
  * Created by bloom on 2017/7/16.
  */
-public class VdResult implements Serializable {
+@XmlRootElement(name="vdresult")
+@XmlAccessorType(XmlAccessType.NONE)
+public class VdResult{
 
+    @XmlElement(name = "msg")
+    private String msg;
 
-    private String state;
+    @XmlElement(name = "code")
     private int code;
+
+    @XmlElement(name = "data")
     private Object data;
+
+    @XmlElement(name = "requestId")
     private String requestId;
 
 
-    public String getState() {
-        return state;
+    public String getMsg() {
+        return msg;
     }
 
-    public void setState(String state) {
-        this.state = state;
+    public void setMsg(String msg) {
+        this.msg = msg;
     }
 
     public int getCode() {
@@ -46,10 +58,12 @@ public class VdResult implements Serializable {
         this.requestId = requestId;
     }
 
-    public VdResult(String state, int code, Object data, String requestId) {
-        this.state = state;
+    public VdResult(String msg, int code, Object data, String requestId) {
+        this.msg = msg;
         this.code = code;
         this.data = data;
         this.requestId = requestId;
     }
+
+    public VdResult(){}
 }

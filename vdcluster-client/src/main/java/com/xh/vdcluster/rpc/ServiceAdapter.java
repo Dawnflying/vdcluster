@@ -8,8 +8,11 @@ import org.apache.thrift.transport.TSocket;
 import org.apache.thrift.transport.TTransport;
 import org.apache.thrift.transport.TTransportException;
 
+
 import java.util.Timer;
 import java.util.TimerTask;
+import java.util.concurrent.ConcurrentHashMap;
+import java.util.concurrent.ConcurrentMap;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 
@@ -17,6 +20,7 @@ import java.util.concurrent.Executors;
  * Created by bloom on 2017/7/26.
  */
 public abstract class ServiceAdapter {
+
     private TTransport transport;
 
     private TProtocol protocol;
@@ -31,14 +35,36 @@ public abstract class ServiceAdapter {
 
     private Timer timer;
 
-    public ConnectionStatusListener listener;
+    private String host;
 
-    protected ServiceAdapter(String host, int port) throws TException{
-        transport = new TSocket(host, port);
-        transport.open();
-        protocol = new TBinaryProtocol(transport);
-        client = new DetectService.Client(protocol);
-        timer = new Timer();
+    private int port;
+
+    private ConcurrentMap<String, TransportListener> listeners;
+
+    protected ServiceAdapter(String host, int port) {
+        this.host = host;
+        this.port = port;
+        listeners = new ConcurrentHashMap<>();
+    }
+
+    public void start(){
+        try {
+            this.transport = new TSocket(host, port);
+            this.transport.open();
+            this.protocol = new TBinaryProtocol(this.transport);
+            this.client = new DetectService.Client(this.protocol);
+            this.timer = new Timer();
+
+            for(TransportListener listener: listeners.values()){
+                listener.onConnected();
+            }
+        } catch (TException t) {
+
+        }
+    }
+
+    public void addListener(String name, TransportListener transportListener) {
+        listeners.put(name, transportListener);
     }
 
     private class RetryTask extends TimerTask {
@@ -58,6 +84,10 @@ public abstract class ServiceAdapter {
             transport.open();
             isConnected = true;
 
+            for(TransportListener listener: listeners.values()){
+                listener.onConnected();
+            }
+
             return;
         } catch (TTransportException e) {
 
@@ -65,5 +95,16 @@ public abstract class ServiceAdapter {
 
         timer.schedule(new ServiceAdapter.RetryTask(), 5 * 1000);
     }
+
+    protected void disConnect(){
+
+        for(TransportListener listener: listeners.values()){
+            listener.onDisconnected();
+        }
+
+        timer.schedule(new ServiceAdapter.RetryTask(), 5 * 1000);
+    }
+
+
 }
 

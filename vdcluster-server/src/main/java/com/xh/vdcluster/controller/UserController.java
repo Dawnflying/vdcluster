@@ -2,10 +2,8 @@ package com.xh.vdcluster.controller;
 
 import com.xh.vdcluster.common.VdResult;
 import com.xh.vdcluster.service.UserService;
-import com.xh.vdcluster.service.VdService;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.http.HttpStatus;
+import org.springframework.web.bind.annotation.*;
 import javax.annotation.Resource;
 
 /**
@@ -18,9 +16,16 @@ public class UserController {
     @Resource
     UserService userService;
 
-    @RequestMapping("/request-token")
-    public VdResult request(@RequestParam(name = "username") String username, @RequestParam(name = "code") String code) {
+    @RequestMapping(value = "/request-token",
+            method = RequestMethod.GET, produces = {"application/xml", "application/json"})
+    @ResponseStatus(HttpStatus.OK)
+    public VdResult request(@RequestParam String username, @RequestParam String code) {
+        return userService.requestToken(username, code);
+    }
 
-        return userService.requestToken(username,code);
+    @RequestMapping(value = "/register", method = RequestMethod.GET, produces = {"application/xml", "application/json"})
+    @ResponseStatus(HttpStatus.OK)
+    public VdResult register(@RequestParam String username, @RequestParam String password) {
+        return userService.register(username, password);
     }
 }

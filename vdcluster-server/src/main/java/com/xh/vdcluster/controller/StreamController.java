@@ -1,8 +1,6 @@
 package com.xh.vdcluster.controller;
 
-import com.xh.vdcluster.common.DetectServiceConfiguration;
-import com.xh.vdcluster.common.VdResult;
-import com.xh.vdcluster.common.VdResultErrorCode;
+import com.xh.vdcluster.common.*;
 import com.xh.vdcluster.common.annotation.Auth;
 import com.xh.vdcluster.repository.model.Stream;
 import com.xh.vdcluster.service.StreamService;
@@ -24,9 +22,6 @@ import java.util.List;
 public class StreamController {
 
     @Resource
-    StreamService streamService;
-
-    @Resource
     TokenService tokenService;
 
     @Resource
@@ -34,13 +29,27 @@ public class StreamController {
 
     @RequestMapping("/register-stream")
     @Auth("register")
-    public VdResult registerStream(@RequestParam(name = "token") String token, @RequestParam(name = "userId") String userId, @RequestBody List<Stream> streamList) {
-        int code = tokenService.validate(token);
+    public VdResult registerStream(@RequestParam(name = "token") String token, @RequestParam(name = "userId") String userId, @RequestBody List<String> streamList) {
+        int code = tokenService.validate(userId, token);
 
         if (VdResultErrorCode.ISFAILED(code))
-            return new VdResult("ok", code, null, userId);
+            return new VdResult("token error", code, null, userId);
 
         List<DetectServiceConfiguration> configurationList = new ArrayList<>();
+
+        for(String url: streamList){
+            List<DetectType> detectTypes = new ArrayList<>();
+            detectTypes.add(new DetectType("smoke", 0.9));
+            DetectServiceConfiguration configuration = new DetectServiceConfiguration();
+            configuration.setDetectType(detectTypes);
+            configuration.setStreamType(0);
+            configuration.setDecodeMode(0);
+            configuration.setServiceId(Md5Utils.MD5(url));
+            configuration.setFrameHeight(300);
+            configuration.setFrameWidth(400);
+            configuration.setStreamURL(url);
+            configurationList.add(configuration);
+        }
 
         return vdService.addServant(userId, token, configurationList);
     }
@@ -49,7 +58,7 @@ public class StreamController {
     @Auth("unregister")
     public VdResult unregisterStream(@RequestParam(name = "token") String token, @RequestParam(name = "userId") String userId, @RequestParam(name = "servantIds") List<String> servantIds) {
 
-        int code = tokenService.validate(token);
+        int code = tokenService.validate(userId, token);
 
         if (VdResultErrorCode.ISFAILED(code)) {
 

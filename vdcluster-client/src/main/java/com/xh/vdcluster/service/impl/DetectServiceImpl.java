@@ -21,7 +21,6 @@ import java.util.List;
 public class DetectServiceImpl implements DetectService.Iface {
     private static final Logger log = LoggerFactory.getLogger(DetectServiceImpl.class);
 
-
     @Resource
     DetectServiceAdapter detectServiceAdapter;
 
@@ -44,24 +43,16 @@ public class DetectServiceImpl implements DetectService.Iface {
 
     @Override
     public SeviceStatusType checkService(String serviceId) {
-
         return detectServiceAdapter.checkService(serviceId);
-
     }
 
     @Override
     public int getMaxServiceNum()  {
-
         return detectServiceAdapter.getMaxServiceNum();
-
     }
 
     @Override
     public List<String> getServices()  {
-
         return detectServiceAdapter.getServices();
-
     }
-
-
 }
